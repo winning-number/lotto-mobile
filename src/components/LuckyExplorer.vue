@@ -42,7 +42,10 @@
           <ion-input v-model="filterOne.input"></ion-input>
         </ion-item>
       </ion-item-group>
-    <ion-button @click="generateNumbers()" color="secondary" class="ion-margin-top ion-margin-bottom" expand="block" shape="round" fill="solid" type="submit">Go</ion-button>
+    <ion-button v-bind:disabled="disableButton" @click="generateNumbers()" color="secondary" class="ion-margin-top ion-margin-bottom" expand="block" shape="round" fill="solid" type="submit">
+      <ion-spinner v-if="disableButton" name="bubbles"></ion-spinner>
+      <ion-text v-else>Go</ion-text>
+    </ion-button>
     </v-form>
   </div>
 </template>

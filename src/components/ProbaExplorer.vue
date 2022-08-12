@@ -42,7 +42,10 @@
           <ion-label>use the ascendant order (select the least picked ball)</ion-label>
           <ion-checkbox v-model="filter.ascendingOrder"></ion-checkbox>
         </ion-item>
-        <ion-button @click="generateNumbers()" color="secondary" class="ion-margin-top ion-margin-bottom" expand="block" shape="round" fill="solid" type="submit">Go</ion-button>
+        <ion-button v-bind:disabled="disableButton" @click="generateNumbers()" color="secondary" class="ion-margin-top ion-margin-bottom" expand="block" shape="round" fill="solid" type="submit">
+          <ion-spinner v-if="disableButton" name="bubbles"></ion-spinner>
+          <ion-text v-else>Go</ion-text>
+        </ion-button>
       </v-form>
   </div>
 </template>

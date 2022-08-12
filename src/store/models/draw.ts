@@ -18,6 +18,33 @@ const FridayName = "Friday"
 const SaturdayName = "Saturday"
 const SundayName = "Sunday"
 
+export function getDayName(day: Day): string {
+	switch (day) {
+		case Day.Monday: {
+			return "LU"
+		}
+		case Day.Tueday: {
+			return "MA"
+		}
+		case Day.Wednesday: {
+			return "ME"
+		}
+		case Day.Thursday: {
+			return "JE"
+		}
+		case Day.Friday: {
+			return "VE"
+		}
+		case Day.Saturday : {
+			return "SA"
+		}
+		case Day.Sunday: {
+			return "DI"
+		}
+	}
+	return "all"
+}
+
 export function getDayFromName(name: string): Day {
 	switch (name) {
 		case MondayName: {
@@ -65,4 +92,15 @@ export interface Draw {
 	ball4: number
 	ball5: number
 	luckyBall: number
+}
+
+export function jsonUnmarshallDraw(json: any): Draw {
+	return {
+		ball1: json.ball_1,
+		ball2: json.ball_2,
+		ball3: json.ball_3,
+		ball4: json.ball_4,
+		ball5: json.ball_5,
+		luckyBall: json.lucky_ball
+	} as Draw
 }

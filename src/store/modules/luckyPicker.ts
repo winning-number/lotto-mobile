@@ -43,7 +43,7 @@ export const luckyPicker: Module<State, ParentState> = {
 	actions: {
 		async luckyOnePick({ commit, dispatch, getters }, filter: LuckyFilterOne): Promise<void> {
 			const drivers = getters.drivers
-			await drivers.lotto.getLuckyOneNumbers().then((draw: Draw) => {
+			await drivers.lotto.getLuckyOneNumbers(filter).then((draw: Draw) => {
 				commit("setLuckyPick", draw);
 				commit("setLuckyFilterOne", filter);
 			}).catch((err: Error) => {
@@ -53,12 +53,12 @@ export const luckyPicker: Module<State, ParentState> = {
 					Title: "oups, something went wrong",
 					Message: "The service was not able to record a new pick number"
 				} as ThrowErrorOption)
-				return
+				return Promise.reject(err)
 			})
 		},
 		async luckyAnyPick({ commit, dispatch, getters }, filter: LuckyFilterAny): Promise<void> {
 			const drivers = getters.drivers
-			await drivers.lotto.getLuckyOneNumbers().then((draw: Draw) => {
+			await drivers.lotto.getLuckyAnyNumbers(filter).then((draw: Draw) => {
 				commit("setLuckyPick", draw);
 				commit("setLuckyFilterAny", filter);
 			}).catch((err: Error) => {
@@ -68,7 +68,7 @@ export const luckyPicker: Module<State, ParentState> = {
 					Title: "oups, something went wrong",
 					Message: "The service was not able to record a new pick number"
 				} as ThrowErrorOption)
-				return
+				return Promise.reject(err)
 			})
 		},
 	},

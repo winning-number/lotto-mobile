@@ -32,7 +32,7 @@ export const randomPicker: Module<State, ParentState> = {
 					Title: "oups, something went wrong",
 					Message: "The service was not able to record a new pick number"
 				} as ThrowErrorOption)
-				return
+				return Promise.reject(err)
 			})
 		},
 	},

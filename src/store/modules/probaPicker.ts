@@ -29,7 +29,7 @@ export const probaPicker: Module<State, ParentState> = {
 	actions: {
 		async probaPick({ commit, dispatch, getters }, filter: ProbaFilter): Promise<void> {
 			const drivers = getters.drivers
-			await drivers.lotto.getProbaNumbers().then((draw: Draw) => {
+			await drivers.lotto.getProbaNumbers(filter).then((draw: Draw) => {
 				commit("setProbaPick", draw);
 				commit("setProbaFilter", filter);
 			}).catch((err: Error) => {
@@ -39,7 +39,7 @@ export const probaPicker: Module<State, ParentState> = {
 					Title: "oups, something went wrong",
 					Message: "The service was not able to record a new pick number"
 				} as ThrowErrorOption)
-				return
+				return Promise.reject(err)
 			})
 		},
 	},

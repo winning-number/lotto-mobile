@@ -2,6 +2,7 @@ import { defineComponent } from 'vue';
 import { useStore } from '@/store';
 import { IonCheckbox, IonItem, IonInput } from '@ionic/vue';
 import { LuckyFilterAny, LuckyFilterOne } from '@/store/models/luckyFilter';
+import { toastController } from '@ionic/vue'
 
 export default defineComponent({
 	name: 'LuckyExplorer',
@@ -14,6 +15,7 @@ export default defineComponent({
 		title: { type: String, required: true },
 	},
 	data() {
+		const disableButton = false
 		const multiInputs = false
 		const filterOne = {} as LuckyFilterOne
 		const filterAny = {} as LuckyFilterAny
@@ -21,6 +23,7 @@ export default defineComponent({
 			multiInputs,
 			filterOne,
 			filterAny,
+			disableButton,
 		};
 	},
 	setup(): void {
@@ -30,12 +33,25 @@ export default defineComponent({
 	},
 	methods: {
 		generateNumbers(): void {
-			if (!this.multiInputs) {
-				this.$store.dispatch('luckyOnePick', this.filterOne)
-
-				return
+			this.disableButton = true
+			let dispatchFunction = "luckyOnePick"
+			let filter: LuckyFilterOne | LuckyFilterAny = this.filterOne
+			if (this.multiInputs) {
+				dispatchFunction = "luckyAnyPick"
+				filter = this.filterAny
 			}
-			this.$store.dispatch('luckyAnyPick', this.filterAny)
+
+			this.$store.dispatch(dispatchFunction, filter).then((): void => {
+					this.disableButton = false
+				}).catch((err: Error): void => {
+					toastController.create({
+						message: err.message,
+						duration: 2000,
+					}).then((toast: HTMLIonToastElement): void => {
+						toast.present()
+					})
+					this.disableButton = false
+			})
 		}
 	}
 })
