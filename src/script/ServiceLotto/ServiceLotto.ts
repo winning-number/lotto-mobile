@@ -4,7 +4,7 @@ import { ProbaFilter } from "@/store/models/probaFilter"
 import axios, { AxiosResponse, AxiosRequestConfig, AxiosResponseHeaders, AxiosRequestHeaders, AxiosError } from "axios"
 import { getRequestConfig } from "@/script/ServiceHttp/ServiceHttp"
 
-const lottoPredictorURL = "https://lotto-predictor-api.herokuapp.com"
+const lottoPredictorURL = "https://lottopredictor.paapscool.fr"
 const randomerPath = "/randomer"
 const luckyPath = "/lucky-number"
 const probaPath = "/proba-explorer"
