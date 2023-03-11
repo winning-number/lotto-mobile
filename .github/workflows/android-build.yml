@@ -59,3 +59,12 @@ jobs:
           name: app-release
           path: android/app/build/outputs/bundle/release/app-release-signed.aab
           retention-days: 60
+
+      - name: Upload to Play console platform
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ PLAY_CONSOLE_SERVICE_ACCOUNT_JSON }}
+          packageName: io.lotogagnant.starter
+          releaseFiles: android/app/build/outputs/bundle/release/app-release-signed.aab
+          track: internal
+          status: draft
