@@ -1,0 +1,10 @@
+.my-separator {
+	border-bottom: 1px solid grey !important;
+}
+
+/* use with a ion-row element to create a spacer
+** ex: <ion-row class="my-spacer"></ion-row>
+*/
+.my-spacer {
+	height: 10px;
+}

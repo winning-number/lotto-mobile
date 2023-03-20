@@ -3,7 +3,7 @@ import { State as ParentState } from '@/store/index'
 import { Draw } from "@/store/models/draw";
 import { ErrorApp } from "@/store/models/ErrorApp";
 import { ThrowErrorOption } from "@/store/modules/error";
-import { ProbaFilter } from '@/store/models/probaFilter';
+import { ProbaFilter } from '@/store/models/filter';
 
 interface State {
 	pickedNumbers: Draw;

@@ -1,0 +1,33 @@
+// Inpiration guide for updatading fonts: https://forum.ionicframework.com/t/how-to-change-font-family-in-ionic/201332/2
+
+@font-face {
+	font-family: "Playfair Display";
+	font-style: normal;
+	font-weight: normal;
+	src: url("@/assets/fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Playfair Display-Bold";
+	font-style: normal;
+	font-weight: bold;
+	src: url("@/assets/fonts/Playfair_Display/static/PlayfairDisplay-Bold.ttf");
+}
+
+@font-face {
+	font-family: "Playfair Display-BoldItalic";
+	font-style: italic;
+	font-weight: bold;
+	src: url("@/assets/fonts/Playfair_Display/static/PlayfairDisplay-BoldItalic.ttf");
+}
+
+@font-face {
+	font-family: "Playfair Display-Italic";
+	font-style: italic;
+	font-weight: normal;
+	src: url("@/assets/fonts/Playfair_Display/static/PlayfairDisplay-Italic.ttf");
+}
+
+* {
+	font-family: "Arial";
+}

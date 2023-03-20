@@ -1,0 +1,130 @@
+// inspiration guide: https://cssanimation.rocks/fr/spheres/
+
+.sn_classic_ball {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(circle at 50% 120%, #323232, rgba(051,055,125, 0.8), rgba(002,077,242,1));
+  -webkit-animation: sn-bubble-anim 2s ease-out infinite;
+  animation: sn-bubble-anim 2s ease-out infinite;
+}
+
+.sn_lucky_ball {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(circle at 50% 120%, #323232, #FFD700 80%, #D4AF37 100%);
+}
+
+.sn_classic_ball:before .sn_lucky_ball:before {
+  content: "";
+  position: absolute;
+  background: radial-gradient(circle at 50% 120%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  bottom: 2.5%;
+  left: 5%;
+  opacity: 0.6;
+  height: 100%;
+  width: 90%;
+  -webkit-filter: blur(5px);
+  z-index: 2;
+}
+
+.sn_classic_ball .sn_number {
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  top: 25%;
+  left: 25%;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.sn_lucky_ball .sn_number {
+  width: 16px;
+  height: 16px;
+  top: 25%;
+  left: 25%;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  animation: sn-move-eye-skew 5s ease-out infinite;
+}
+
+.sn_number:before {
+  content: var(--sn-ball-value);
+  display: block;
+  position: absolute;
+  text-align: center;
+  height: 10px;
+  width: 14px;
+  left: 10%;
+//  top: 10%;
+  color: black;
+  font-family: 'Playfair Display';
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 11px;
+}
+
+@keyframes sn-bubble-anim {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scaleY(0.95) scaleX(1.05);
+  }
+  48% {
+    transform: scaleY(1.1) scaleX(0.9);
+  }
+  68% {
+    transform: scaleY(0.98) scaleX(1.02);
+  }
+  80% {
+    transform: scaleY(1.02) scaleX(0.98);
+  }
+  97%, 100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes sn-move-eye-skew {
+  0% {
+    transform: none;
+  }
+  20% {
+    transform: translateX(3px) translateY(-2px) skewX(1deg) skewY(2deg) scaleX(0.85);
+  }
+  30%, 44% {
+    transform: none;
+  }
+  50%, 60% {
+    transform: translateX(1px) translateY(3px) skewX(1deg) skewY(-1deg) scale(0.85);
+  }
+  70%, 85% {
+    transform: translateX(-3px) translateY(1px) skewX(1deg) skewY(-1deg) scale(0.85);
+  }
+  90%, 100% {
+    transform: none;
+  }
+}
+
+.sn_stage {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin: 1px;
+  perspective: 80px;
+  -webkit-perspective-origin: 50% 50%;
+  -moz-perspective-origin: 50% 50%;
+  -ms-perspective-origin: 50% 50%;
+  -o-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%;
+}

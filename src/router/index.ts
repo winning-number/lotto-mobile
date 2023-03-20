@@ -1,23 +1,23 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-import TabsPage from '@/views/tabs-page.vue'
+import GenNumber from '@/views/GenNumber/GenNumber.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tabs/tab1'
+    redirect: '/generator'
   },
   {
-    path: '/tabs/',
-    component: TabsPage,
-    children: [
+    path: '/generator',
+    component: GenNumber,
+/* using format with the tab navigation   children: [
       {
         path: '',
         redirect: '/tabs/tab1'
       },
       {
         path: 'tab1',
-        component: () => import('@/views/TabRandomExplorer.vue')
+        component: () => import('@/views/GenNumber/GenNumber.vue')
       },
       {
         path: 'tab2',
@@ -26,8 +26,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'tab3',
         component: () => import('@/views/TabProbaExplorer.vue')
-      }
-    ]
+      },
+      {
+        path: 'tab4',
+        component: () => import('@/views/TabRandomExplorer.vue')
+      },
+    ]*/
   }
 ]
 
