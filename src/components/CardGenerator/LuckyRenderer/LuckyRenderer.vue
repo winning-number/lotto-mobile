@@ -19,7 +19,7 @@
       <ion-row class="my-spacer"></ion-row>
       <v-form>
         <ion-text>
-          Pick your favorites numbers with your lucky charm like your cat's name or whatever else.
+          No inspiration ? Tell us what brings you luck and we will generate your lucky numbers.
         </ion-text>
         <ion-item-group>
           <ion-item>
@@ -36,27 +36,27 @@
         <ion-item-group v-else>
           <ion-list>
             <ion-item>
-              <ion-label>lucky charm for the first ball: </ion-label>
+              <ion-label>lucky charm for Ball1: </ion-label>
               <ion-input v-model="filter.ball1Input"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>lucky charm for the second ball: </ion-label>
+              <ion-label>lucky charm for Ball2: </ion-label>
               <ion-input v-model="filter.ball2Input"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>lucky charm for the third ball: </ion-label>
+              <ion-label>lucky charm for Ball3: </ion-label>
               <ion-input v-model="filter.ball3Input"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>lucky charm for the fourth ball: </ion-label>
+              <ion-label>lucky charm for Ball4: </ion-label>
               <ion-input v-model="filter.ball4Input"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>lucky charm for the fifth ball: </ion-label>
+              <ion-label>lucky charm for Ball5: </ion-label>
               <ion-input v-model="filter.ball5Input"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>lucky charm for the lucky ball: </ion-label>
+              <ion-label>lucky charm for Ball lucky: </ion-label>
               <ion-input v-model="filter.luckyInput"></ion-input>
             </ion-item>
           </ion-list>

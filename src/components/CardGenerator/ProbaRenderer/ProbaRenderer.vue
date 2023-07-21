@@ -19,11 +19,12 @@
       <ion-row class="my-spacer"></ion-row>
       <v-form>
         <ion-text>
-          Use probabilities to get the numbers depends on your selected filters.
+          Use the probabilities to get your draw. You can filter several elements to refine your result.
+          Filters are used to obtain a base of draws to apply the probability algorithms.
         </ion-text>
         <ion-item-group>
           <ion-item>
-            <ion-label>select the the draws for the specifics day</ion-label>
+            <ion-label>Select draws base by day</ion-label>
             <ion-select v-model="selectedDay">
               <ion-select-option
                 v-for="(day, index) in days"
@@ -37,31 +38,31 @@
         <ion-item-group>
           <ion-list>
             <ion-item>
-              <ion-label>with second roll:</ion-label>
-              <ion-checkbox v-model="filter.secondRoll"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <ion-label>with "super" lotto:</ion-label>
-              <ion-checkbox v-model="filter.superLotto"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <ion-label>with "grand" lotto:</ion-label>
-              <ion-checkbox v-model="filter.grandLotto"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <ion-label>with "xmax" lotto:</ion-label>
-              <ion-checkbox v-model="filter.xmaxLotto"></ion-checkbox>
-            </ion-item>
-            <ion-item>
-              <ion-label>with "classical" lotto</ion-label>
+              <ion-label>Use the new loto</ion-label>
               <ion-checkbox v-model="filter.classicLotto"></ion-checkbox>
             </ion-item>
             <ion-item>
-              <ion-label>with "old" lotto (before 2008):</ion-label>
+              <ion-label>Use the second roll:</ion-label>
+              <ion-checkbox v-model="filter.secondRoll"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label>Use the "super loto":</ion-label>
+              <ion-checkbox v-model="filter.superLotto"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label>Use the "grand loto":</ion-label>
+              <ion-checkbox v-model="filter.grandLotto"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label>Use the "xmas loto":</ion-label>
+              <ion-checkbox v-model="filter.xmaxLotto"></ion-checkbox>
+            </ion-item>
+            <ion-item>
+              <ion-label>Use the old loto (before 2008):</ion-label>
               <ion-checkbox v-model="filter.oldLotto"></ion-checkbox>
             </ion-item>
             <ion-item>
-              <ion-label>use the least picked ball:</ion-label>
+              <ion-label>Search with the most often drawn numbers</ion-label>
               <ion-checkbox v-model="filter.ascendingOrder"></ion-checkbox>
             </ion-item>
           </ion-list>

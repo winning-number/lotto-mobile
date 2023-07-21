@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
 import { useStore } from '@/store';
 import { CardData, CardDataTag } from "@/script/GenerateCard/GenerateCard";
-import { ProbaFilter } from "@/store/models/filter";
+import { ProbaFlashFilter } from "@/store/models/filter";
 import { getDayFromName, getDayList } from '@/store/models/draw';
 import { IonModal, IonContent, IonTitle, IonRow, IonText, IonItemGroup, IonItem, IonLabel, IonSelect, IonSelectOption, IonList, IonCheckbox } from '@ionic/vue';
 import ModalHeader from "@/components/CardGenerator/ModalHeader/ModalHeader.vue"
@@ -30,8 +30,8 @@ export default defineComponent({
 		const days: Array<string> = getDayList()
 		const selectedDay = days[0]
 		const tmpSelectedDay = days[0]
-		const filter = new ProbaFilter()
-		const tmpFilter = new ProbaFilter()
+		const filter = new ProbaFlashFilter()
+		const tmpFilter = new ProbaFlashFilter()
 		const data = new CardData(CardDataTag.ProbaCardData)
 
 		filter.classicLotto = true
@@ -64,7 +64,6 @@ export default defineComponent({
 			this.data.close()
 		},
 		generate(): void {
-			console.log("coucou" + this.filter)
 			this.filter.day = getDayFromName(this.selectedDay)
 			this.data.generator(this.filter)
 		},

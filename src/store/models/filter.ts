@@ -4,24 +4,26 @@ export interface Filter {
 	getActionPath(): string
 }
 
-// RandomFilter for generate a new random pick with excluding any number
-export class RandomFilter implements Filter {
+// SmartFlashFilter for generate a new random pick with excluding any number
+export class SmartFlashFilter implements Filter {
 	private actionPath = "randomPick"
 
 	excludeBallNumber: Array<number>
 	excludeLuckyNumber: Array<number>
+	excludeAlreadyPicked: boolean
 
 	constructor() {
 		this.excludeBallNumber = [];
-		this.excludeLuckyNumber = []; 
+		this.excludeLuckyNumber = [];
+		this.excludeAlreadyPicked = true;
 	}
 	getActionPath(): string {
 		return this.actionPath
 	}
 }
 
-// ProbaFilter for the generation draw with probabilities settings
-export class ProbaFilter implements Filter {
+// ProbaFlashFilter for the generation draw with probabilities settings
+export class ProbaFlashFilter implements Filter {
 	private actionPath = "probaPick"
 
 	day: Day
@@ -39,7 +41,7 @@ export class ProbaFilter implements Filter {
 		this.superLotto = false
 		this.grandLotto = false
 		this.xmaxLotto = false
-		this.classicLotto = false
+		this.classicLotto = true
 		this.oldLotto = false
 		this.ascendingOrder = false
 	}
@@ -49,7 +51,7 @@ export class ProbaFilter implements Filter {
 }
 
 // LuckyFilter for the generation draw with lucky charm(s) input(s)
-export class LuckyFilter implements Filter {
+export class LuckyFlashFilter implements Filter {
 	private actionPath = "luckyPick"
 	ball1Input: string
 	ball2Input: string

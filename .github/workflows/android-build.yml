@@ -67,4 +67,4 @@ jobs:
           packageName: io.lotogagnant.starter
           releaseFiles: android/app/build/outputs/bundle/release/app-release-signed.aab
           track: internal
-          status: completed
+          status: draft

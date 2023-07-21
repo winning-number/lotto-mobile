@@ -22,7 +22,7 @@
       <ion-item href="#">
         <ion-label>Settings</ion-label>
       </ion-item>
-      <ion-item href="#">
+      <ion-item href="/aboutus">
         <ion-label>About us</ion-label>
       </ion-item>
       <ion-item href="#">

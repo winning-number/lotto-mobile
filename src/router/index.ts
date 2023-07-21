@@ -32,6 +32,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/TabRandomExplorer.vue')
       },
     ]*/
+  },
+  {
+    path: '/aboutus',
+    component: () => import('@/views/AboutUs/AboutUs.vue'),
   }
 ]
 

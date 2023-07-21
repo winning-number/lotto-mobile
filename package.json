@@ -21,6 +21,7 @@
     "axios": "^0.27.2",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
+    "gulp-sass": "^5.1.0",
     "https": "^1.0.0",
     "https-proxy-agent": "^5.0.1",
     "node-sass": "^8.0.0",
@@ -30,7 +31,7 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@capacitor/cli": "4.0.0",
+    "@capacitor/cli": "^4.8.0",
     "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",

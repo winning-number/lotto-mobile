@@ -3,7 +3,7 @@ import { State as ParentState } from '@/store/index'
 import { Draw } from "@/store/models/draw";
 import { ErrorApp } from "@/store/models/ErrorApp";
 import { ThrowErrorOption } from "@/store/modules/error";
-import { RandomFilter } from "@/store/models/filter";
+import { SmartFlashFilter } from "@/store/models/filter";
 
 interface State {
 	pickedNumbers: Draw;
@@ -22,9 +22,9 @@ export const randomPicker: Module<State, ParentState> = {
 		},
 	},
 	actions: {
-		async randomPick({ commit, dispatch, getters }, filter: RandomFilter): Promise<void> {
+		async randomPick({ commit, dispatch, getters }, filter: SmartFlashFilter): Promise<void> {
 			const drivers = getters.drivers
-			await drivers.lotto.getRandomNumbers().then((draw: Draw) => {
+			await drivers.lotto.getSmartFlashNumbers(filter).then((draw: Draw) => {
 				commit("setRandomPick", draw);
 			}).catch((err: Error) => {
 				const wrappedErr = new ErrorApp("getRandomNumbers", err)

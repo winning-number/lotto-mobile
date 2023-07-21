@@ -1,15 +1,15 @@
 import { defineComponent } from "vue";
 import { useStore } from '@/store';
 import { CardData, CardDataTag } from "@/script/GenerateCard/GenerateCard";
-import { RandomFilter } from "@/store/models/filter";
-import { IonModal, IonContent, IonTitle, IonRow, IonText, IonCheckbox, IonItem, IonInput } from '@ionic/vue';
+import { SmartFlashFilter } from "@/store/models/filter";
+import { IonModal, IonContent, IonTitle, IonRow, IonText, IonCheckbox, IonItem, IonInput, IonSelect, IonSelectOption } from '@ionic/vue';
 import CardTemplate from '@/components/CardGenerator/CardTemplate/CardTemplate.vue'
 import ModalHeader from "@/components/CardGenerator/ModalHeader/ModalHeader.vue"
 
 export default defineComponent({
 	name: 'FlashRenderer',
 	components: {
-		IonModal, IonContent, IonTitle, IonRow, IonText, IonCheckbox, IonItem, IonInput,
+		IonModal, IonContent, IonTitle, IonRow, IonText, IonCheckbox, IonItem, IonInput, IonSelect, IonSelectOption,
 		CardTemplate,
 		ModalHeader,
 	},
@@ -25,8 +25,10 @@ export default defineComponent({
 		}
 	},
 	data() {
-		const filter = new RandomFilter()
-		const tmpFilter = new RandomFilter()
+		const maxLuckyNumber = 10
+		const maxBallNumber = 49
+		const filter = new SmartFlashFilter()
+		const tmpFilter = new SmartFlashFilter()
 		const data = new CardData(CardDataTag.RandomCardData)
 
 		data.altImage = "lot of dices"
@@ -38,15 +40,17 @@ export default defineComponent({
 			filter,
 			data,
 			tmpFilter,
+			maxLuckyNumber,
+			maxBallNumber,
 		}
 	},
 	methods: {
 		cancel(): void {
-			this.filter = Object.assign({}, this.tmpFilter)
+			this.filter = Object.assign([], this.tmpFilter)
 			this.data.close()
 		},
 		openSettings(): void {
-			this.tmpFilter = Object.assign({}, this.filter)
+			this.tmpFilter = Object.assign([], this.filter)
 			this.data.open()
 		},
 		confirm(): void {
@@ -54,6 +58,12 @@ export default defineComponent({
 		}, 
 		generate(): void {
 			this.data.generator(this.filter)
+		},
+		onLuckySelectionChange(values: number[]): void {
+			this.filter.excludeLuckyNumber = Object.assign([], values)
+		},
+		onBallSelectionChange(values: number[]): void {
+			this.filter.excludeBallNumber = Object.assign([], values)
 		},
 	},
 })
