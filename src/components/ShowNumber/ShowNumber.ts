@@ -1,5 +1,10 @@
 import { defineComponent } from 'vue';
-import { IonRow, IonCol } from '@ionic/vue'
+import {
+	IonRow,
+	IonCol,
+	IonToolbar,
+	IonText,
+} from '@ionic/vue'
 
 export class ballsNames {
 	static ball1 = 1
@@ -13,12 +18,14 @@ export class ballsNames {
 export default defineComponent({
 	name: 'ShowNumber',
 	components: {
-		IonRow, IonCol,
+		IonRow,
+		IonCol,
+		IonToolbar,
+		IonText,
 	},
 	computed: {
 		ballsValues: function() {
 			return (id: number): any => {
-				console.log("in function with id: " + id.toString())
 				let value = 0
 				switch (id) {
 					case ballsNames.ball1: {
@@ -46,7 +53,6 @@ export default defineComponent({
 						break;
 					}
 				}
-				console.log('--sn-ball-value: ' + value.toString())
 				return "--sn-ball-value: '"+value.toString()+"';"
 			}
 		}

@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
 import { useStore } from '@/store';
 import { CardData, CardDataTag } from "@/script/GenerateCard/GenerateCard";
-import { LuckyFilter } from "@/store/models/filter";
+import { LuckyFlashFilter } from "@/store/models/filter";
 import { IonModal, IonContent, IonTitle, IonRow, IonText, IonItemGroup, IonItem, IonLabel, IonCheckbox, IonInput, IonList } from '@ionic/vue';
 import CardTemplate from '@/components/CardGenerator/CardTemplate/CardTemplate.vue'
 import ModalHeader from "@/components/CardGenerator/ModalHeader/ModalHeader.vue"
@@ -26,16 +26,16 @@ export default defineComponent({
 	},
 	data() {
 		const multiInputs = false
-		const filter = new LuckyFilter()
-		const tmpFilter = new LuckyFilter()
+		const filter = new LuckyFlashFilter()
+		const tmpFilter = new LuckyFlashFilter()
 		const tmpMultiInputs = multiInputs
 		const data = new CardData(CardDataTag.LuckyCardData)
 
-		filter.ball1Input = "lotto-gagnant"
+		filter.ball1Input = "ma mémé Manou"
 		data.altImage = "clover alignements"
-		data.srcImage = require('@/assets/clover-image.png')
-		data.title = "Lucky"
-		data.description = "Generate your lucky numbers"
+		data.srcImage = require('@/assets/lucky_flash_ban2.png')
+		data.title = "Du genre à jouer la date de naissance de mémé ?"
+		data.description = "Pas d'inspiration ? Donnez-nous le prénom de votre être bien aimé, celui de votre chat ou ce qui vous passe par la tête. On s'occupe du reste !"
 
 		return {
 			filter,
@@ -60,13 +60,12 @@ export default defineComponent({
 			this.data.close()
 		}, 
 		generate(): void {
-			if (!this.multiInputs) {
-				this.filter.ball2Input = this.filter.ball1Input + "2"
-				this.filter.ball3Input = this.filter.ball1Input + "3"
-				this.filter.ball4Input = this.filter.ball1Input + "4"
-				this.filter.ball5Input = this.filter.ball1Input + "5"
-				this.filter.luckyInput = this.filter.ball1Input + "*"
-				this.filter.ball1Input += "1"
+			if (this.multiInputs) {
+				this.filter.ball2Input = this.filter.ball1Input
+				this.filter.ball3Input = this.filter.ball1Input
+				this.filter.ball4Input = this.filter.ball1Input
+				this.filter.ball5Input = this.filter.ball1Input
+				this.filter.luckyInput = this.filter.ball1Input
 			}
 			this.data.generator(this.filter)
 		},

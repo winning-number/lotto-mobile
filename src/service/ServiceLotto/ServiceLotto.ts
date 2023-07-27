@@ -1,27 +1,34 @@
 import { Draw, getDayName, jsonUnmarshallDraw } from "@/store/models/draw"
-import { LuckyFilter } from "@/store/models/filter"
-import { ProbaFilter } from "@/store/models/filter"
-import axios, { AxiosResponse, AxiosRequestConfig, AxiosResponseHeaders, AxiosRequestHeaders, AxiosError } from "axios"
+import { LuckyFlashFilter, SmartFlashFilter } from "@/store/models/filter"
+import { ProbaFlashFilter } from "@/store/models/filter"
+import axios, { AxiosResponse, AxiosError } from "axios"
 import { getRequestConfig } from "@/service/ServiceHttp/ServiceHttp"
 
-const lottoPredictorURL = "https://lottopredictor.paapscool.fr"
-const randomerPath = "/randomer"
-const luckyPath = "/lucky-number"
-const probaPath = "/proba-explorer"
-const luckyParamBall1 = "salt_ball_1"
-const luckyParamBall2 = "salt_ball_2"
-const luckyParamBall3 = "salt_ball_3"
-const luckyParamBall4 = "salt_ball_4"
-const luckyParamBall5 = "salt_ball_5"
-const luckyParamLuckyBall = "salt_lucky_ball"
-const probaParamDay = "day"
-const probaParamSecondRoll = "second_roll"
-const probaParamSuperLotto = "super_lotto"
-const probaParamGrandLotto = "grand_lotto"
-const probaParamXmaxLotto = "xmax_lotto"
-const probaParamClassicLotto = "classic_lotto"
-const probaParamOldLotto = "old_lotto"
-const probaParamAscendingOrder = "ascending_order"
+const lottoPredictorURL = "http://localhost:4242/api"
+//const lottoPredictorURL = "https://lottopredictor.paapscool.fr"
+const smartFlashPath = "/smartflash"
+const luckyFlashPath = "/luckyflash"
+const probaFlashPath = "/probaflash"
+
+const smartFlashParamExcludeNumber = "exclude_number"
+const smartFlashParamExcludeLucky = "exclude_lucky"
+const smartFlashParamExcludeAlreadyPick = "exclude_already_pick"
+
+const luckyFlashParamBall1 = "salt_b1"
+const luckyFlashParamBall2 = "salt_b2"
+const luckyFlashParamBall3 = "salt_b3"
+const luckyFlashParamBall4 = "salt_b4"
+const luckyFlashParamBall5 = "salt_b5"
+const luckyFlashParamLuckyBall = "salt_lucky"
+
+const probaFlashParamDay = "selected_day"
+const probaFlashParamSecondRoll = "second_roll"
+const probaFlashParamSuperLotto = "super_lotto"
+const probaFlashParamGrandLotto = "grand_lotto"
+const probaFlashParamXmaxLotto = "xmas_lotto"
+const probaFlashParamClassicLotto = "classic_lotto"
+const probaFlashParamOldLotto = "old_lotto"
+const probaFlashParamAscendingOrder = "top_max"
 
 interface ServiceLotto {
 	driver: boolean;
@@ -34,11 +41,17 @@ export default class SLotto implements ServiceLotto{
 	constructor() {
 		this.driver = true
 	}
-	async getRandomNumbers(): Promise<Draw> {
+	async getSmartFlashNumbers(filter: SmartFlashFilter): Promise<Draw> {
 		let draw = {} as Draw
 		let err = {} as AxiosError
-		const conf = getRequestConfig(lottoPredictorURL, randomerPath)
+		const conf = getRequestConfig(lottoPredictorURL, smartFlashPath)
+		const params = new URLSearchParams()
 
+		params.append(smartFlashParamExcludeAlreadyPick, filter.excludeAlreadyPicked.toString())
+		params.append(smartFlashParamExcludeNumber, filter.excludeBallNumber.toString())
+		params.append(smartFlashParamExcludeLucky, filter.excludeLuckyNumber.toString())
+
+		conf.params = params
 		await axios(conf).then((resp: AxiosResponse): void => {
 			draw = jsonUnmarshallDraw(resp.data)
 		}).catch((axiosErr: AxiosError): void => {
@@ -51,19 +64,19 @@ export default class SLotto implements ServiceLotto{
 
 		return Promise.resolve(draw)
 	}
-	async getLuckyNumbers(filter: LuckyFilter): Promise<Draw> {
+	async getLuckyFlashNumbers(filter: LuckyFlashFilter): Promise<Draw> {
 		let draw = {} as Draw
 		let err = {} as AxiosError
 
-		const conf = getRequestConfig(lottoPredictorURL, luckyPath)
+		const conf = getRequestConfig(lottoPredictorURL, luckyFlashPath)
 		const params = new URLSearchParams()
 
-		params.append(luckyParamBall1, filter.ball1Input)
-		params.append(luckyParamBall2, filter.ball2Input)
-		params.append(luckyParamBall3, filter.ball3Input)
-		params.append(luckyParamBall4, filter.ball4Input)
-		params.append(luckyParamBall5, filter.ball5Input)
-		params.append(luckyParamLuckyBall, filter.luckyInput)
+		params.append(luckyFlashParamBall1, filter.ball1Input)
+		params.append(luckyFlashParamBall2, filter.ball2Input)
+		params.append(luckyFlashParamBall3, filter.ball3Input)
+		params.append(luckyFlashParamBall4, filter.ball4Input)
+		params.append(luckyFlashParamBall5, filter.ball5Input)
+		params.append(luckyFlashParamLuckyBall, filter.luckyInput)
 		conf.params = params
 
 		await axios(conf).then((resp: AxiosResponse): void => {
@@ -78,20 +91,20 @@ export default class SLotto implements ServiceLotto{
 
 		return Promise.resolve(draw)
 	}
-	async getProbaNumbers(filter: ProbaFilter): Promise<Draw> {
+	async getProbaFlashNumbers(filter: ProbaFlashFilter): Promise<Draw> {
 		let draw = {} as Draw
 		let err = {} as AxiosError
-		const conf = getRequestConfig(lottoPredictorURL, probaPath)
+		const conf = getRequestConfig(lottoPredictorURL, probaFlashPath)
 
 		const params = new URLSearchParams()
-		params.append(probaParamDay, getDayName(filter.day))
-		params.append(probaParamSecondRoll, filter.secondRoll.toString())
-		params.append(probaParamSuperLotto, filter.superLotto.toString())
-		params.append(probaParamGrandLotto, filter.grandLotto.toString())
-		params.append(probaParamXmaxLotto, filter.grandLotto.toString())
-		params.append(probaParamClassicLotto, filter.classicLotto.toString())
-		params.append(probaParamAscendingOrder, filter.ascendingOrder.toString())
-		params.append(probaParamOldLotto, filter.oldLotto.toString())
+		params.append(probaFlashParamDay, getDayName(filter.day))
+		params.append(probaFlashParamSecondRoll, filter.secondRoll.toString())
+		params.append(probaFlashParamSuperLotto, filter.superLotto.toString())
+		params.append(probaFlashParamGrandLotto, filter.grandLotto.toString())
+		params.append(probaFlashParamXmaxLotto, filter.grandLotto.toString())
+		params.append(probaFlashParamClassicLotto, filter.classicLotto.toString())
+		params.append(probaFlashParamAscendingOrder, filter.ascendingOrder.toString())
+		params.append(probaFlashParamOldLotto, filter.oldLotto.toString())
 		conf.params = params
 
 		await axios(conf).then((resp: AxiosResponse): void => {

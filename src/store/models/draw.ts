@@ -9,40 +9,40 @@ export enum Day {
 	Sunday
 }
 
-const AllDayName = "All"
-const MondayName = "Monday"
-const TuedayName = "Tueday"
-const WednesdayName = "Wednesday"
-const ThursdayName = "Thursday"
-const FridayName = "Friday"
-const SaturdayName = "Saturday"
-const SundayName = "Sunday"
+const AllDayName = "Tous"
+const MondayName = "Lundi"
+const TuedayName = "Mardi"
+const WednesdayName = "Mercredi"
+const ThursdayName = "Jeudi"
+const FridayName = "Venredi"
+const SaturdayName = "Samedi"
+const SundayName = "Dimanche"
 
 export function getDayName(day: Day): string {
 	switch (day) {
 		case Day.Monday: {
-			return "LU"
+			return "MONDAY"
 		}
 		case Day.Tueday: {
-			return "MA"
+			return "TUESDAY"
 		}
 		case Day.Wednesday: {
-			return "ME"
+			return "WEDNESDAY"
 		}
 		case Day.Thursday: {
-			return "JE"
+			return "THURSDAY"
 		}
 		case Day.Friday: {
-			return "VE"
+			return "FRIDAY"
 		}
 		case Day.Saturday : {
-			return "SA"
+			return "SATURDAY"
 		}
 		case Day.Sunday: {
-			return "DI"
+			return "SUNDAY"
 		}
 	}
-	return "all"
+	return ""
 }
 
 export function getDayFromName(name: string): Day {

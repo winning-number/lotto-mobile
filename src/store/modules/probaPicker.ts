@@ -3,33 +3,33 @@ import { State as ParentState } from '@/store/index'
 import { Draw } from "@/store/models/draw";
 import { ErrorApp } from "@/store/models/ErrorApp";
 import { ThrowErrorOption } from "@/store/modules/error";
-import { ProbaFilter } from '@/store/models/filter';
+import { ProbaFlashFilter } from '@/store/models/filter';
 
 interface State {
 	pickedNumbers: Draw;
 	pick: boolean;
-	filter: ProbaFilter;
+	filter: ProbaFlashFilter;
 }
 
 export const probaPicker: Module<State, ParentState> = {
 	state: {
 		pickedNumbers: {} as Draw,
 		pick: false,
-		filter: {} as ProbaFilter,
+		filter: {} as ProbaFlashFilter,
 	},
 	mutations: {
 		setProbaPick(state: State, draw: Draw): void {
 			state.pickedNumbers = draw
 			state.pick = true
 		},
-		setProbaFilter(state: State, filter: ProbaFilter): void {
+		setProbaFilter(state: State, filter: ProbaFlashFilter): void {
 			state.filter = filter
 		}
 	},
 	actions: {
-		async probaPick({ commit, dispatch, getters }, filter: ProbaFilter): Promise<void> {
+		async probaPick({ commit, dispatch, getters }, filter: ProbaFlashFilter): Promise<void> {
 			const drivers = getters.drivers
-			await drivers.lotto.getProbaNumbers(filter).then((draw: Draw) => {
+			await drivers.lotto.getProbaFlashNumbers(filter).then((draw: Draw) => {
 				commit("setProbaPick", draw);
 				commit("setProbaFilter", filter);
 			}).catch((err: Error) => {
@@ -50,7 +50,7 @@ export const probaPicker: Module<State, ParentState> = {
 		probaNumbers(state: State): Draw {
 			return state.pickedNumbers
 		},
-		probaFilter(state: State): ProbaFilter {
+		probaFilter(state: State): ProbaFlashFilter {
 			return state.filter
 		},
 	}

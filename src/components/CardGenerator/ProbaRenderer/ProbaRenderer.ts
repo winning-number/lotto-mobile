@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
 import { useStore } from '@/store';
 import { CardData, CardDataTag } from "@/script/GenerateCard/GenerateCard";
-import { ProbaFilter } from "@/store/models/filter";
+import { ProbaFlashFilter } from "@/store/models/filter";
 import { getDayFromName, getDayList } from '@/store/models/draw';
 import { IonModal, IonContent, IonTitle, IonRow, IonText, IonItemGroup, IonItem, IonLabel, IonSelect, IonSelectOption, IonList, IonCheckbox } from '@ionic/vue';
 import ModalHeader from "@/components/CardGenerator/ModalHeader/ModalHeader.vue"
@@ -30,15 +30,15 @@ export default defineComponent({
 		const days: Array<string> = getDayList()
 		const selectedDay = days[0]
 		const tmpSelectedDay = days[0]
-		const filter = new ProbaFilter()
-		const tmpFilter = new ProbaFilter()
+		const filter = new ProbaFlashFilter()
+		const tmpFilter = new ProbaFlashFilter()
 		const data = new CardData(CardDataTag.ProbaCardData)
 
 		filter.classicLotto = true
 		data.altImage = "chalkboard with mathematic symbols"
-		data.srcImage = require('@/assets/proba-image.jpg')
-		data.title = "Probabilities"
-		data.description = "Generate your number with probabilities selections"
+		data.srcImage = require('@/assets/proba_flash_ban2.png')
+		data.title = "Imagine ce qu'on peut faire avec des maths !"
+		data.description = "Vous voulez jouer les numéros les moins joués ? les plus joués ? Considerer les lotos du lundi ? du mercredi ? du samedi ? les grands lotos ? les super loto ? les lotos de noël ? les loto d'avant 2008 ?"
 
 		return {
 			filter,
@@ -64,7 +64,6 @@ export default defineComponent({
 			this.data.close()
 		},
 		generate(): void {
-			console.log("coucou" + this.filter)
 			this.filter.day = getDayFromName(this.selectedDay)
 			this.data.generator(this.filter)
 		},

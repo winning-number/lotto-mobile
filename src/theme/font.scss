@@ -28,6 +28,30 @@
 	src: url("@/assets/fonts/Playfair_Display/static/PlayfairDisplay-Italic.ttf");
 }
 
-* {
-	font-family: "Arial";
+@font-face {
+	font-family: 'Metropolis';
+	src: url("@/assets/fonts/metropolis/Metropolis-SemiBold.otf");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Metropolis';
+	font-style: normal;
+	font-weight: bold;
+	src: url('@/assets/fonts/metropolis/Metropolis-Bold.otf');
+}
+
+@font-face {
+	font-family: 'Metropolis';
+	font-style: italic;
+	font-weight: normal;
+	src: url('@/assets/fonts/metropolis/Metropolis-SemiBoldItalic.otf');
+}
+
+@font-face {
+	font-family: 'Metropolis';
+	font-style: italic;
+	font-weight: bold;
+	src: url('@/assets/fonts/metropolis/Metropolis-BoldItalic.otf');
 }

@@ -10,12 +10,6 @@ export class GeneratePath {
 	static probaPick = "probaPick"
 }
 
-export enum CardDataTag {
-	RandomCardData = 1,
-	LuckyCardData,
-	ProbaCardData,
-}
-
 export interface ICardData {
 	/* CardData about the generator type content */
 	altImage: string,
@@ -29,6 +23,12 @@ export interface ICardData {
 	openModal: boolean, 
 }
 
+export enum CardDataTag {
+	RandomCardData = 1,
+	LuckyCardData,
+	ProbaCardData,
+}
+
 export class CardData implements ICardData {
 	private store: Store<State>;
 
@@ -37,6 +37,7 @@ export class CardData implements ICardData {
 	title: string;
 	description: string;
 	draws: Draw;
+	tag: CardDataTag;
 
 	openModal = false
 	loading = false
@@ -48,6 +49,7 @@ export class CardData implements ICardData {
 		this.srcImage = ""
 		this.title = ""
 		this.description = ""
+		this.tag = tag
 		this.draws = {} as Draw
 	}
 	generator(filter: Filter): void {

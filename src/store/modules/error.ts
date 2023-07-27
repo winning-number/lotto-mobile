@@ -25,7 +25,9 @@ export const errorModule: Module<State, ParentState> = {
 	actions: {
 		async throwError({ commit, getters }, opts: ThrowErrorOption): Promise<void> {
 			const drivers: Driver = getters.drivers
-			//drivers.firebase.createError(opts.Err)
+			if (drivers.lotto != undefined) {
+				console.log("lotto driver is defined")
+			}
 
 			console.log(opts.Err)
 			commit("addError", opts.Err)
