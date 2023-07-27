@@ -66,5 +66,5 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_CONSOLE_SERVICE_ACCOUNT_JSON }}
           packageName: io.lotogagnant.starter
           releaseFiles: android/app/build/outputs/bundle/release/app-release-signed.aab
-          track: internal
-          status: draft
+          track: beta
+          status: completed

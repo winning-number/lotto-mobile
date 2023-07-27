@@ -12,12 +12,11 @@ see: https://capgo.app/blog/automatic-capacitor-android-build-github-action/
 
 #### CURRENT
 
-- Implement auto deployment in BETA from Android developer tool
-
 #### PLANNED
 
 <OPENNING_BETA_VERSION>
 
+- Implement auto deployment in BETA from Android developer tool depends on branch to have test branch
 - Add documentation
 - Implement a Makefile for build, tests, lints, update dependencies ...
 - Implement loader images for the application to upload assets
