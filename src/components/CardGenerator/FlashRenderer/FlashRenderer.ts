@@ -2,14 +2,35 @@ import { defineComponent } from "vue";
 import { useStore } from '@/store';
 import { CardData, CardDataTag } from "@/script/GenerateCard/GenerateCard";
 import { SmartFlashFilter } from "@/store/models/filter";
-import { IonModal, IonContent, IonTitle, IonRow, IonText, IonCheckbox, IonItem, IonInput, IonSelect, IonSelectOption } from '@ionic/vue';
+import { IonModal,
+	IonContent,
+	IonTitle,
+	IonRow,
+	IonText,
+	IonCheckbox,
+	IonItem,
+	IonInput,
+	IonSelect,
+	IonSelectOption,
+	IonItemGroup,
+} from '@ionic/vue';
 import CardTemplate from '@/components/CardGenerator/CardTemplate/CardTemplate.vue'
 import ModalHeader from "@/components/CardGenerator/ModalHeader/ModalHeader.vue"
 
 export default defineComponent({
 	name: 'FlashRenderer',
 	components: {
-		IonModal, IonContent, IonTitle, IonRow, IonText, IonCheckbox, IonItem, IonInput, IonSelect, IonSelectOption,
+		IonModal,
+		IonContent,
+		IonTitle,
+		IonRow,
+		IonText,
+		IonCheckbox,
+		IonItem,
+		IonInput,
+		IonSelect,
+		IonSelectOption,
+		IonItemGroup,
 		CardTemplate,
 		ModalHeader,
 	},
@@ -32,9 +53,9 @@ export default defineComponent({
 		const data = new CardData(CardDataTag.RandomCardData)
 
 		data.altImage = "lot of dices"
-		data.srcImage = require('@/assets/flash-image.jpg')
-		data.title = "Flash"
-		data.description = "Generate your picks randomly"
+		data.srcImage = require('@/assets/smart_flash_ban2.png')
+		data.title = "Comme un flash mais en mieux !"
+		data.description = "Vous voulez éviter que votre flash vous donne les numéros gagnants d'hier ? C'est ici :) Vous voulez exclure des numéros ? C'est ici aussi ;)"
 
 		return {
 			filter,
@@ -58,12 +79,6 @@ export default defineComponent({
 		}, 
 		generate(): void {
 			this.data.generator(this.filter)
-		},
-		onLuckySelectionChange(values: number[]): void {
-			this.filter.excludeLuckyNumber = Object.assign([], values)
-		},
-		onBallSelectionChange(values: number[]): void {
-			this.filter.excludeBallNumber = Object.assign([], values)
 		},
 	},
 })

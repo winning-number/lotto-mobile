@@ -12,18 +12,18 @@
       <ion-grid class="ion-no-padding">
         <ion-row class="ion-align-items-center">
           <ion-col size="10">
-            <ion-card-title>{{ title }}</ion-card-title>
+            <ion-card-subtitle style="font-weight: bold">{{ title }}</ion-card-subtitle>
           </ion-col>
           <ion-col size="2">
             <ion-button class="ion-float-end" size=small fill=clear :disabled="this.loading" @click="this.openSettings()">
-              <ion-icon :icon="settingsSharp"></ion-icon>
+              <ion-icon color="secondary" :icon="settingsSharp"></ion-icon>
             </ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-header>
     <ion-card-content>
-      <ion-text>{{ description }}</ion-text>
+      <ion-text style="font-size: small;">{{ description }}</ion-text>
       <ion-button class="ion-margin-top" expand="block" fill="solid" :disabled="this.loading" @click="this.generateNumber()">
         <ion-spinner v-if="this.loading" name="bubbles"></ion-spinner>
         <ion-text v-else>Generate</ion-text>

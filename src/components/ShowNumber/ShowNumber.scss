@@ -7,9 +7,9 @@
   margin: 0;
   border-radius: 50%;
   position: relative;
-  background: radial-gradient(circle at 50% 120%, #323232, rgba(051,055,125, 0.8), rgba(002,077,242,1));
-  -webkit-animation: sn-bubble-anim 2s ease-out infinite;
-  animation: sn-bubble-anim 2s ease-out infinite;
+  background: radial-gradient(circle at 50% 120%, #048198, #05a1d9 80%, #05a1d9);
+ // -webkit-animation: sn-bubble-anim 2s ease-out infinite;
+ // animation: sn-bubble-anim 2s ease-out infinite;
 }
 
 .sn_lucky_ball {
@@ -19,7 +19,7 @@
   margin: 0;
   border-radius: 50%;
   position: relative;
-  background: radial-gradient(circle at 50% 120%, #323232, #FFD700 80%, #D4AF37 100%);
+  background: radial-gradient(circle at 50% 120%, #323232, #d93205 80%, #d93205 100%);
 }
 
 .sn_classic_ball:before .sn_lucky_ball:before {
@@ -42,7 +42,7 @@
   text-align: center;
   top: 25%;
   left: 25%;
-  background: white;
+//  background: white;
   border-radius: 50%;
   position: absolute;
 }
@@ -52,7 +52,7 @@
   height: 16px;
   top: 25%;
   left: 25%;
-  background: white;
+//  background: white;
   border-radius: 50%;
   position: absolute;
   animation: sn-move-eye-skew 5s ease-out infinite;
@@ -64,14 +64,14 @@
   position: absolute;
   text-align: center;
   height: 10px;
-  width: 14px;
-  left: 10%;
+  width: 24px;
+  left: -25%;
 //  top: 10%;
-  color: black;
-  font-family: 'Playfair Display';
-  font-size: 12px;
+  color: white;
+  font-family: 'Lobster Two';
+  font-size: 18px;
   font-weight: bold;
-  line-height: 11px;
+  line-height: 16px;
 }
 
 @keyframes sn-bubble-anim {
@@ -100,7 +100,7 @@
     transform: none;
   }
   20% {
-    transform: translateX(3px) translateY(-2px) skewX(1deg) skewY(2deg) scaleX(0.85);
+    transform: translateX(3px) translateY(-2px) skewX(1deg) skewY(2deg) scaleX(0.65);
   }
   30%, 44% {
     transform: none;

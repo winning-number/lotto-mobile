@@ -31,11 +31,11 @@ export default defineComponent({
 		const tmpMultiInputs = multiInputs
 		const data = new CardData(CardDataTag.LuckyCardData)
 
-		filter.ball1Input = "lotto-gagnant"
+		filter.ball1Input = "ma mémé Manou"
 		data.altImage = "clover alignements"
-		data.srcImage = require('@/assets/clover-image.png')
-		data.title = "Lucky"
-		data.description = "Generate your lucky numbers"
+		data.srcImage = require('@/assets/lucky_flash_ban2.png')
+		data.title = "Du genre à jouer la date de naissance de mémé ?"
+		data.description = "Pas d'inspiration ? Donnez-nous le prénom de votre être bien aimé, celui de votre chat ou ce qui vous passe par la tête. On s'occupe du reste !"
 
 		return {
 			filter,
@@ -60,7 +60,7 @@ export default defineComponent({
 			this.data.close()
 		}, 
 		generate(): void {
-			if (!this.multiInputs) {
+			if (this.multiInputs) {
 				this.filter.ball2Input = this.filter.ball1Input
 				this.filter.ball3Input = this.filter.ball1Input
 				this.filter.ball4Input = this.filter.ball1Input

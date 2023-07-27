@@ -1,7 +1,20 @@
 import { defineComponent, PropType } from 'vue';
 import { settingsSharp } from 'ionicons/icons';
 import { Draw } from '@/store/models/draw';
-import { IonCard, IonCardHeader, IonGrid, IonRow, IonCol, IonCardTitle, IonButton, IonIcon, IonCardContent, IonText, IonSpinner } from '@ionic/vue'
+import {
+	IonCard,
+	IonCardHeader,
+	IonGrid,
+	IonRow,
+	IonCol,
+	IonCardTitle,
+	IonButton,
+	IonIcon,
+	IonCardContent,
+	IonText,
+	IonSpinner,
+	IonCardSubtitle,
+} from '@ionic/vue'
 import { toastController } from '@ionic/vue';
 import ShowNumber from '@/components/ShowNumber/ShowNumber.vue'
 
@@ -9,7 +22,18 @@ export default defineComponent({
 	name: 'CardTemplate',
 
 	components: {
-		IonCard, IonCardHeader, IonGrid, IonRow, IonCol, IonCardTitle, IonButton, IonIcon, IonCardContent, IonText, IonSpinner,
+		IonCard,
+		IonCardHeader,
+		IonGrid,
+		IonRow,
+		IonCol,
+		IonCardTitle,
+		IonButton,
+		IonIcon,
+		IonCardContent,
+		IonText,
+		IonSpinner,
+		IonCardSubtitle,
 		toastController,
 		ShowNumber,
 	},

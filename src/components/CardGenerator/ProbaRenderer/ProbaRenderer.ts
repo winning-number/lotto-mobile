@@ -36,9 +36,9 @@ export default defineComponent({
 
 		filter.classicLotto = true
 		data.altImage = "chalkboard with mathematic symbols"
-		data.srcImage = require('@/assets/proba-image.jpg')
-		data.title = "Probabilities"
-		data.description = "Generate your number with probabilities selections"
+		data.srcImage = require('@/assets/proba_flash_ban2.png')
+		data.title = "Imagine ce qu'on peut faire avec des maths !"
+		data.description = "Vous voulez jouer les numéros les moins joués ? les plus joués ? Considerer les lotos du lundi ? du mercredi ? du samedi ? les grands lotos ? les super loto ? les lotos de noël ? les loto d'avant 2008 ?"
 
 		return {
 			filter,

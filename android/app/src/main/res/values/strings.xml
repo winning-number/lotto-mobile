@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">winning-number</string>
-    <string name="title_activity_main">winning-number</string>
+    <string name="app_name">loto gagnant</string>
+    <string name="title_activity_main">lotto-gagnant</string>
     <string name="package_name">io.lotogagnant.starter</string>
     <string name="custom_url_scheme">io.lotogagnant.starter</string>
 </resources>

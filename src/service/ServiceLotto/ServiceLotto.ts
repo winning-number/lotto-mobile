@@ -1,7 +1,7 @@
 import { Draw, getDayName, jsonUnmarshallDraw } from "@/store/models/draw"
 import { LuckyFlashFilter, SmartFlashFilter } from "@/store/models/filter"
 import { ProbaFlashFilter } from "@/store/models/filter"
-import axios, { AxiosResponse, AxiosRequestConfig, AxiosResponseHeaders, AxiosRequestHeaders, AxiosError } from "axios"
+import axios, { AxiosResponse, AxiosError } from "axios"
 import { getRequestConfig } from "@/service/ServiceHttp/ServiceHttp"
 
 const lottoPredictorURL = "http://localhost:4242/api"

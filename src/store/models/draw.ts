@@ -9,14 +9,14 @@ export enum Day {
 	Sunday
 }
 
-const AllDayName = "All"
-const MondayName = "Monday"
-const TuedayName = "Tueday"
-const WednesdayName = "Wednesday"
-const ThursdayName = "Thursday"
-const FridayName = "Friday"
-const SaturdayName = "Saturday"
-const SundayName = "Sunday"
+const AllDayName = "Tous"
+const MondayName = "Lundi"
+const TuedayName = "Mardi"
+const WednesdayName = "Mercredi"
+const ThursdayName = "Jeudi"
+const FridayName = "Venredi"
+const SaturdayName = "Samedi"
+const SundayName = "Dimanche"
 
 export function getDayName(day: Day): string {
 	switch (day) {
