@@ -5,7 +5,7 @@ import axios, { AxiosResponse, AxiosError } from "axios"
 import { getRequestConfig } from "@/service/ServiceHttp/ServiceHttp"
 
 //const lottoPredictorURL = "http://localhost:4242/api"
-const lottoPredictorURL = "https://lottopredictor.paapscool.fr/api"
+const lottoPredictorURL = "https://draw-api.paapscool.fr/api"
 const smartFlashPath = "/smartflash"
 const luckyFlashPath = "/luckyflash"
 const probaFlashPath = "/probaflash"

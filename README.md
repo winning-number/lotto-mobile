@@ -10,15 +10,16 @@ see: https://capgo.app/blog/automatic-capacitor-android-build-github-action/
 
 ### TODO
 
+- Implement auto deployment in BETA from Android developer tool depends on branch to have test branch
+- Implement a Makefile for build, tests, lints, update dependencies ...
+
 #### CURRENT
 
 #### PLANNED
 
 <OPENNING_BETA_VERSION>
 
-- Implement auto deployment in BETA from Android developer tool depends on branch to have test branch
 - Add documentation
-- Implement a Makefile for build, tests, lints, update dependencies ...
 - Implement loader images for the application to upload assets
 - Implement full splash screen
 - Implement elegant way to copy / paste result
