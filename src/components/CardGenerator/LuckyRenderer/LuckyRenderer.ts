@@ -5,6 +5,7 @@ import { LuckyFlashFilter } from "@/store/models/filter";
 import { IonModal, IonContent, IonTitle, IonRow, IonText, IonItemGroup, IonItem, IonLabel, IonCheckbox, IonInput, IonList } from '@ionic/vue';
 import CardTemplate from '@/components/CardGenerator/CardTemplate/CardTemplate.vue'
 import ModalHeader from "@/components/CardGenerator/ModalHeader/ModalHeader.vue"
+import { alertController } from '@ionic/vue';
 
 export default defineComponent({
 	name: 'LuckyRenderer',
@@ -12,6 +13,7 @@ export default defineComponent({
 		IonModal, IonContent, IonTitle, IonRow, IonText, IonItemGroup, IonItem, IonLabel, IonCheckbox, IonInput, IonList,
 		CardTemplate,
 		ModalHeader,
+		alertController,
 	},
 	watch: {
 		'$store.getters.luckyNumbers': function(){
@@ -60,12 +62,32 @@ export default defineComponent({
 			this.data.close()
 		}, 
 		generate(): void {
-			if (this.multiInputs) {
+			if (!this.multiInputs) {
 				this.filter.ball2Input = this.filter.ball1Input
 				this.filter.ball3Input = this.filter.ball1Input
 				this.filter.ball4Input = this.filter.ball1Input
 				this.filter.ball5Input = this.filter.ball1Input
 				this.filter.luckyInput = this.filter.ball1Input
+			} else {
+				if (this.filter.ball1Input == ""
+					|| this.filter.ball2Input == ""
+					|| this.filter.ball3Input == ""
+					|| this.filter.ball4Input == ""
+					|| this.filter.ball5Input == ""
+					|| this.filter.luckyInput == "") {
+					const presentAlert = async () => {
+						const alert = await alertController.create({
+						header: 'Lucky Flash',
+						subHeader: 'La configuration est incomplète',
+						message: 'L\'option multi-inputs est activée, mais tous les champs ne sont pas remplis.',
+						buttons: ['J\'ai compris'],
+						});
+						
+						await alert.present();
+					}
+					presentAlert();
+					return ;
+				}
 			}
 			this.data.generator(this.filter)
 		},

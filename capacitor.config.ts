@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'loto-gagnant',
+  appId: 'io.lotogagnant.starter',
   appName: 'loto gagnant',
   webDir: 'dist',
   bundledWebRuntime: false

@@ -1,11 +1,16 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import GenNumber from '@/views/GenNumber/GenNumber.vue'
+import HomePage from '@/views/HomePage/HomePage.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/generator'
+    redirect: '/home'
+  },
+  {
+    path: '/home',
+    component: HomePage,
   },
   {
     path: '/generator',
