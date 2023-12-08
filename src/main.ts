@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { store, key } from '@/store';
-//import { store, key, initStore } from '@/store';
 import router from './router';
 
 import { IonicVue } from '@ionic/vue';
@@ -32,8 +31,6 @@ const app = createApp(App)
   .use(IonicVue)
   .use(store, key)
   .use(router);
-
-//initStore(store);
 
 router.isReady().then(() => {
   app.mount('#app');

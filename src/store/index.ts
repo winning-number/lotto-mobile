@@ -1,12 +1,11 @@
 import { InjectionKey } from 'vue';
 import { createStore, useStore as baseUseStore, Store } from 'vuex';
-//import { ErrorApp } from '@/store/models/ErrorApp';
-//import { ThrowErrorOption } from '@/store/modules/error';
 import { errorModule } from '@/store/modules/error';
-import { randomPicker } from './modules/randomPicker';
-import { luckyPicker } from './modules/luckyPicker';
-import { probaPicker } from './modules/probaPicker';
+import { randomPicker } from '@/store/modules/randomPicker';
+import { luckyPicker } from '@/store/modules/luckyPicker';
+import { probaPicker } from '@/store/modules/probaPicker';
 import { Driver } from '@/store/models/driver';
+import { homePicker } from '@/store/modules/homePicker';
 
 export interface State {
 	drivers: Driver;
@@ -27,6 +26,7 @@ export const store = createStore<State>({
 		randomPicker,
 		luckyPicker,
 		probaPicker,
+		homePicker,
 	},
 	getters: {
 		drivers(state: State): Driver {
@@ -34,9 +34,3 @@ export const store = createStore<State>({
 		}
 	}
 })
-
-// initStore should be called after createStore operation from main.ts
-// using for update the initial data which need full instanciated stuff
-/*export function initStore(store: Store<State>): void {
-	console.log("init store done")
-}*/

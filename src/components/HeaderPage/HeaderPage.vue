@@ -10,7 +10,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <ion-item href="/generator">
+      <ion-item href="/home">
         <ion-label color="secondary">Accueil</ion-label>
       </ion-item>
       <ion-item href="/generator">
@@ -46,22 +46,6 @@
     </ion-buttons>
     <ion-title slot="end" class="hp_title">Loto Gagnant</ion-title>
       <img slot="end" alt="logo" height="40" src="@/assets/logo6.png">
-
-<!--
-    <ion-grid class="ion-no-padding">
-      <ion-row class="ion-align-items-center">
-        <ion-col size="2">
-          <ion-buttons class="ion-float-start">
-            <ion-menu-button>
-            </ion-menu-button>
-          </ion-buttons>
-        </ion-col>
-        <ion-col size="8">
-          <ion-title>Loto Gagnant !</ion-title>
-        </ion-col>
-        <ion-col size="2"></ion-col>
-      </ion-row>
-    </ion-grid>-->
   </ion-toolbar>
   </ion-header>
 </template>

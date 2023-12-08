@@ -1,5 +1,6 @@
 import { Draw, getDayName, jsonUnmarshallDraw } from "@/store/models/draw"
 import { LuckyFlashFilter, SmartFlashFilter } from "@/store/models/filter"
+import { HomeData, jsonUnmarshallHomeData } from "@/store/models/homeData"
 import { ProbaFlashFilter } from "@/store/models/filter"
 import axios, { AxiosResponse, AxiosError } from "axios"
 import { getRequestConfig } from "@/service/ServiceHttp/ServiceHttp"
@@ -9,6 +10,7 @@ const lottoPredictorURL = "https://draw-api.paapscool.fr/api"
 const smartFlashPath = "/smartflash"
 const luckyFlashPath = "/luckyflash"
 const probaFlashPath = "/probaflash"
+const homePath = "/home"
 
 const smartFlashParamExcludeNumber = "exclude_number"
 const smartFlashParamExcludeLucky = "exclude_lucky"
@@ -118,5 +120,22 @@ export default class SLotto implements ServiceLotto{
 		}
 
 		return Promise.resolve(draw)
+	}
+	async getHomeData(): Promise<HomeData> {
+		let homeData = {} as HomeData
+		let err = {} as AxiosError
+		const conf = getRequestConfig(lottoPredictorURL, homePath)
+
+		await axios(conf).then((resp: AxiosResponse): void => {
+			homeData = jsonUnmarshallHomeData(resp.data)
+		}).catch((axiosErr: AxiosError): void => {
+			console.log(axiosErr)
+			err = axiosErr
+		})
+		if (err.message != undefined) {
+			return Promise.reject(err)
+		}
+
+		return Promise.resolve(homeData)
 	}
 }
