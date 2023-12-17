@@ -1,10 +1,4 @@
 import { defineComponent } from 'vue';
-import {
-	IonRow,
-	IonCol,
-	IonToolbar,
-	IonText,
-} from '@ionic/vue'
 
 export class ballsNames {
 	static ball1 = 1
@@ -17,12 +11,7 @@ export class ballsNames {
 
 export default defineComponent({
 	name: 'ShowNumber',
-	components: {
-		IonRow,
-		IonCol,
-		IonToolbar,
-		IonText,
-	},
+	components: {},
 	computed: {
 		ballsValues: function() {
 			return (id: number): any => {

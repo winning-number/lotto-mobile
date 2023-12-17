@@ -1,15 +1,9 @@
-//import ServiceFirebase from '@/script/ServiceFirebase/ServiceFirebase';
-//import ServiceStorage from '@/script/ServiceStorage';
-import ServiceLotto from '@/service/ServiceLotto/ServiceLotto';
+import SdkDrawApi from '@/service/SdkDrawApi/SdkDrawApi';
 
 export class Driver {
-	lotto: ServiceLotto
-//	firebase: ServiceFirebase
-//	storage: ServiceStorage
+	lotto: SdkDrawApi
 	
 	constructor() {
-		this.lotto = new ServiceLotto()
-//		this.firebase = new ServiceFirebase()
-//		this.storage = new ServiceStorage()
+		this.lotto = new SdkDrawApi()
 	}
 }
