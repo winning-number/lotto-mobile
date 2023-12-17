@@ -8,8 +8,6 @@
   border-radius: 50%;
   position: relative;
   background: radial-gradient(circle at 50% 120%, #048198, #05a1d9 80%, #05a1d9);
- // -webkit-animation: sn-bubble-anim 2s ease-out infinite;
- // animation: sn-bubble-anim 2s ease-out infinite;
 }
 
 .sn_lucky_ball {
@@ -37,16 +35,55 @@
 }
 
 .sn_classic_ball .sn_number {
-  width: 16px;
-  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.sn_number:before {
+  content: var(--sn-ball-value);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-family: 'Lobster Two';
+  font-size: 3.5vmin; // Ajustez cette valeur en fonction de vos besoins
+  font-weight: bold;
+  line-height: 1;
+}
+
+.sn_lucky_ball .sn_number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  animation: sn-move-eye-skew 5s ease-out infinite;
+}
+
+
+/*
+.sn_classic_ball .sn_number {
+//  width: 16px;
+//  height: 16px;
+  width: 50%;
+  height: 50%;
   text-align: center;
   top: 25%;
   left: 25%;
 //  background: white;
   border-radius: 50%;
   position: absolute;
-}
-
+}*/
+/*
 .sn_lucky_ball .sn_number {
   width: 16px;
   height: 16px;
@@ -56,8 +93,8 @@
   border-radius: 50%;
   position: absolute;
   animation: sn-move-eye-skew 5s ease-out infinite;
-}
-
+}*/
+/*
 .sn_number:before {
   content: var(--sn-ball-value);
   display: block;
@@ -65,14 +102,15 @@
   text-align: center;
   height: 10px;
   width: 24px;
-  left: -25%;
+//  left: -50%;
+  left: -28%;
 //  top: 10%;
   color: white;
   font-family: 'Lobster Two';
   font-size: 18px;
   font-weight: bold;
   line-height: 16px;
-}
+}*/
 
 @keyframes sn-bubble-anim {
   0% {
@@ -120,7 +158,7 @@
   width: 30px;
   height: 30px;
   display: inline-block;
-  margin: 1px;
+//  margin: 1px;
   perspective: 80px;
   -webkit-perspective-origin: 50% 50%;
   -moz-perspective-origin: 50% 50%;

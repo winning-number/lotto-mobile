@@ -12,6 +12,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
+      "@ionic/vue",
       "webpack-env",
       "jest"
     ],

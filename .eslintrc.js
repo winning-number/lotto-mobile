@@ -26,6 +26,14 @@ module.exports = {
       env: {
         jest: true
       }
+    },
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      parser: '@typescript-eslint/parser',
+      plugins: ['@typescript-eslint'],
+      rules: {
+        // Ajoutez vos règles pour TypeScript ici
+      }
     }
   ]
 }

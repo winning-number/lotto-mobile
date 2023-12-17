@@ -1,0 +1,6 @@
+export const RulesApp = {
+	LUCKYBALL_MAX_VALUE: 10,
+	LUCKYBALL_MIN_VALUE: 1,
+	BALL_MIN_VALUE: 1,
+	BALL_MAX_VALUE: 49,
+}
