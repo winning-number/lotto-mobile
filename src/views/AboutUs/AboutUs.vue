@@ -1,16 +1,28 @@
 <template>
   <ion-page>
-    <HeaderPage />
-    <ion-content class="ion-padding" :fullscreen="true">
+    <AppToolbar />
+    <ion-content class="ion-padding" fullscreen="true">
       <ion-text color="medium">
         <p>Loto Gagnant est une application du studio indépendant: <b>Paapscool Studio</b> qui comprend une seule personne car oui, il faut bien commencer quelques pars :)</p>
 
-        <p>Tout d'abord, merci d'avoir téléchargé cette app, un pas de plus vers le gros lot : D</p>
+        <p>Tout d'abord, merci d'avoir téléchargé cette app, un pas de plus vers LE gros lot : D</p>
 
         <p>Je m'appelle Yannick et je suis développeur. Dans le cadre de cette app, je suis aussi l'ux designer, le graphiste, le chargé de com, le responsable marketing ....</p>
 
         <p>Loto Gagnant est en Beta test, ce qui veut dire qu'il est possible que vous tombiez sur des dysfonctionnements par moments. Je ferais mon max pour que ça arrive le moins souvent possible.</p>
-
+        <p>N'hésitez pas à me faire remonter les bugs que vous rencontrez directement sur le groupe WhatApp je ferais de mon mieux pour les corriger rapidement.</p>
+        <ion-row class="ion-no-padding ion-align-items-center ion-justify-content-between my-separator">
+          <ion-col size="1"></ion-col>
+          <ion-col>
+            <ion-button  href="https://chat.whatsapp.com/CK9jmQ0aoKd57wAV09dOe4">
+              <ion-icon class="ion-padding-end" :icon="logoWhatsapp"></ion-icon>
+              <ion-label>
+                rejoindre le groupe WhatsApp
+              </ion-label>
+            </ion-button>
+          </ion-col>
+          <ion-col size="1"></ion-col>
+        </ion-row>
         <p>Pour vous donner l'eau à la bouche, voici les futures fonctionnalités qui sont déjà planifiées:</p>
         <ul>
           <li>L'historique des tirages du loto</li>

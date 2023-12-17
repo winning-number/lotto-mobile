@@ -1,21 +1,15 @@
 import { defineComponent } from 'vue';
-import {
-	IonPage,
-	IonContent,
-	IonText,
-} from '@ionic/vue';
-import HeaderPage from '@/components/HeaderPage/HeaderPage.vue';
+import AppToolbar from '@/components/AppToolbar/AppToolbar.vue';
+import { logoWhatsapp } from 'ionicons/icons';
 
 export default defineComponent({
 	name: 'GenNumber',
 	components: {
-		IonPage,
-		IonContent,
-		IonText,
-		HeaderPage,
+		AppToolbar
 	},
 	setup() {
 		return {
+			logoWhatsapp,
 		};
 	},
 	data() {

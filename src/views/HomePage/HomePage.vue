@@ -1,72 +1,43 @@
 <template>
   <ion-page>
-    <HeaderPage />
-    <ion-content :fullscreen="true">
-      <ion-card :disabled="false" button href="/generator">
+    <AppToolbar />
+    <ion-content fullscreen="true">
+      <ModalShowDraw v-if="this.showLastDrawDetails"
+        :draw="this.lastDrawData"
+        @closeCallback="this.closeModalShowLastDraw()"
+      />
+      <ion-card :disabled="false" button @click="openModalShowLastDraw()">
         <CardHeaderSection
-          :srcImage="this.nextDraw.srcImage"
-          :altImage="this.nextDraw.altImage"
-          :overlayImageText="this.nextDraw.overlayImageText"
-          :shadowColorOverlay="this.nextDraw.shadowColorOverlay"
+          :headerTitle="this.lastDraw.headerTitle"
+          :headerText="this.lastDraw.headerText"
+          :subTitle="this.lastDraw.subTitle"
+          :type="this.lastDraw.type"
+          :style="this.lastDraw.style"
+          :draws="this.lastDraw.draws"
+          :drawsOutHeader="this.lastDraw.drawsOutHeader"
+        />
+      </ion-card>
+      <ion-card :disabled="false" button router-link="/generator/smart">
+        <CardHeaderSection
+          :headerTitle="this.nextDraw.headerTitle"
+          :headerText="this.nextDraw.headerText"
           :subTitle="this.nextDraw.subTitle"
-          :cardType="this.nextDraw.cardType"
+          :type="this.nextDraw.type"
+          :style="this.nextDraw.style"
+          :draws="this.nextDraw.draws"
+          :drawsOutHeader="this.nextDraw.drawsOutHeader"
         />
       </ion-card>
       <ion-card :disabled="true">
         <CardHeaderSection
-          :srcImage="this.appStats.srcImage"
-          :altImage="this.appStats.altImage"
-          :overlayImageText="this.appStats.overlayImageText"
-          :shadowColorOverlay="this.appStats.shadowColorOverlay"
+          :headerTitle="this.appStats.headerTitle"
+          :headerText="this.appStats.headerText"
           :subTitle="this.appStats.subTitle"
-          :cardType="this.appStats.cardType"
+          :type="this.appStats.type"
+          :style="this.appStats.style"
+          :draws="this.appStats.draws"
+          :drawsOutHeader="this.appStats.drawsOutHeader"
         />
-      </ion-card>
-      <ion-card :disabled="false">
-        <CardHeaderSection
-          :srcImage="this.lastDraw.srcImage"
-          :altImage="this.lastDraw.altImage"
-          :overlayImageText="this.lastDraw.overlayImageText"
-          :shadowColorOverlay="this.lastDraw.shadowColorOverlay"
-          :subTitle="this.lastDraw.subTitle"
-          :cardType="this.lastDraw.cardType"
-          :drawsOutHeader="this.lastDraw.drawsOutHeader"
-          :draws="this.lastDraw.draws"
-        />
-        <ion-card-content>
-          <ion-list lines="full">
-            <ion-grid class="ion-no-padding ion-no-margin">
-              <ion-row color="warning" class="ion-no-padding ion-align-items-center ion-justify-content-between my-separator"
-                style="height: 40px; font-size: 10;"
-                v-for="(report, index) in reportWinners"
-                :key="index + '-report'"
-                :value="index"
-              >
-                <ion-col size="4" class="ion-no-padding ion-text-start ion-text-justify">
-                  <ion-label class="text-wrap">{{ report.title }}</ion-label>
-                </ion-col>
-                <ion-col size="3" class="ion-no-padding ion-text-center">
-                  <ion-label>{{ report.nbWinner }}</ion-label>
-                </ion-col>
-                <ion-col size="5" class="ion-no-padding ion-text-end">
-                  <ion-label>{{ report.RateWin }}</ion-label>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-list>
-          <ion-grid class="ion-no-padding">
-            <ion-row class="ion-align-items-center">
-              <ion-col size="12">
-                <ion-card-subtitle class="ion-text-end ion-no-padding" style="font-weight: bold">
-                  <ion-button color="primary" size="small" fill="clear" style="font-weight: bold">
-                    <ion-label>Plus de details</ion-label>
-                    <ion-icon slot="end" color="primary" :icon="chevronForwardOutline"></ion-icon>
-                  </ion-button>
-                </ion-card-subtitle>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-card-content>
       </ion-card>
     </ion-content>
   </ion-page>
