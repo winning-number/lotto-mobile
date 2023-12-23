@@ -9,25 +9,25 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <ion-item @click="closeMenu" button :router-link="RouteNames.HOME">
+      <ion-item @click="this.nav(this.RouteNames.HOME)" button>
         <ion-label color="secondary">Accueil</ion-label>
       </ion-item>
-      <ion-item @click="closeMenu" button :router-link="RouteNames.GENERATOR">
+      <ion-item @click="this.nav(this.RouteNames.GENERATOR)" button>
         <ion-label color="secondary">Générateur de tirages</ion-label>
       </ion-item>
-      <ion-item @click="closeMenu" button disabled router-link="#">
+      <ion-item @click="this.nav('#')" button disabled>
         <ion-label color="secondary">Mes tirages</ion-label>
       </ion-item>
-      <ion-item @click="closeMenu" button disabled routeur-link="#">
+      <ion-item @click="this.nav('#')" button disabled>
         <ion-label color="secondary">Historique du loto</ion-label>
       </ion-item>
-      <ion-item @click="closeMenu" button disabled router-link="#">
+      <ion-item @click="this.nav('#')" button disabled>
         <ion-label color="secondary">Statistiques</ion-label>
       </ion-item>
-      <ion-item @click="closeMenu" button disabled router-link="#">
+      <ion-item @click="this.nav('#')" button disabled>
         <ion-label color="secondary">Paramètres</ion-label>
       </ion-item>
-      <ion-item @click="closeMenu" button :router-link="RouteNames.ABOUT_US">
+      <ion-item @click="this.nav(RouteNames.ABOUT_US)" button router-direction="forward">
         <ion-label color="secondary">À propos de nous</ion-label>
       </ion-item>
       <ion-item button @click="this.Share()">

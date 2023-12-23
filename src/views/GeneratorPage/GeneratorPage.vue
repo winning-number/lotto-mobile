@@ -2,21 +2,21 @@
   <ion-page>
     <ion-tabs>
       <AppToolbar />
-      <ion-router-outlet></ion-router-outlet>
+      <ion-router-outlet animated="true"></ion-router-outlet>
       <ion-tab-bar slot="bottom">
-        <ion-tab-button :tab="RouteNames.GENERATOR_SMART" @click="this.switchTab(RouteNames.GENERATOR_SMART)">
-          <ion-icon :src="this.flashIcon" />
-          <ion-label>Smart</ion-label>
+        <ion-tab-button tab="smart" href="smart">
+          <ion-icon :src="this.flashIcon" :color="getTabColor('smart')" />
+          <ion-label :color="getTabColor('smart')">Smart</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button button :tab="RouteNames.GENERATOR_LUCKY" @click="this.switchTab(RouteNames.GENERATOR_LUCKY)">
-          <ion-icon :src="this.luckyIcon" />
-          <ion-label>Lucky</ion-label>
+        <ion-tab-button tab="lucky" href="lucky">
+          <ion-icon :src="this.luckyIcon" :color="getTabColor('lucky')"/>
+          <ion-label :color="getTabColor('lucky')">Lucky</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button button :tab="RouteNames.GENERATOR_PROBA" @click="this.switchTab(RouteNames.GENERATOR_PROBA)">
-          <ion-icon :src="this.probaIcon" />
-          <ion-label>Proba</ion-label>
+        <ion-tab-button tab="proba" href="proba">
+          <ion-icon :src="this.probaIcon" :color="getTabColor('proba')"/>
+          <ion-label :color="getTabColor('proba')">Proba</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>

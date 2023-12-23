@@ -31,8 +31,9 @@ export default defineComponent({
 				dialogTitle: 'Partage l\'appli avec tes amis et dis leur de partager le pactole avec toi !',
 			});
 		},
-		closeMenu() {
+		nav(path: string): void {
 			menuController.close("main-menu");
+			this.$router.push(path);
 		}
 	}
 })

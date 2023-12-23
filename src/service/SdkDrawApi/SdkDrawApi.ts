@@ -44,7 +44,7 @@ export default class SdkDrawApi {
 
 	constructor() {
 		this.baseURL = "https://draw-api.paapscool.fr"
-		//this.baseURL = "localhost:4242"
+		//this.baseURL = "http://localhost:4242"
 		this.paths = {
 			SMART_FLASH_GENERATOR: "/api/smartflash",
 			LUCKY_FLASH_GENERATOR: "/api/luckyflash",

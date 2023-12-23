@@ -83,6 +83,9 @@ export default defineComponent({
 		closeModalShowLastDraw(): void {
 			this.showLastDrawDetails = false
 		},
+		nav(path: string): void {
+			this.$router.push(path);
+		}
 	},
 });
 

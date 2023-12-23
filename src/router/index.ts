@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import HomePage from '@/views/HomePage/HomePage.vue'
+import GeneratorPage from '@/views/GeneratorPage/GeneratorPage.vue'
+import GeneratorSmart from '@/views/GeneratorPage/SmartFlash/SmartFlash.vue'
+import GeneratorLucky from '@/views/GeneratorPage/LuckyFlash/LuckyFlash.vue'
+import GeneratorProba from '@/views/GeneratorPage/ProbaFlash/ProbaFlash.vue'
 
 export const RouteNames = {
   DEFAULT: "/",
@@ -25,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: RouteNames.GENERATOR,
-    component: () => import('@/views/GeneratorPage/GeneratorPage.vue'),
+    component: GeneratorPage,
     children: [
       {
         path: RouteNames.GENERATOR_DEFAULT,
@@ -33,15 +37,18 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: RouteNames.GENERATOR_SMART,
-        component: () => import('@/views/GeneratorPage/SmartFlash/SmartFlash.vue'),
+        name: RouteNames.GENERATOR_SMART,
+        component: GeneratorSmart,
       },
       {
         path: RouteNames.GENERATOR_LUCKY,
-        component: () => import('@/views/GeneratorPage/LuckyFlash/LuckyFlash.vue'),
+        name: RouteNames.GENERATOR_LUCKY,
+        component: GeneratorLucky,
       },
       {
         path: RouteNames.GENERATOR_PROBA,
-        component: () => import('@/views/GeneratorPage/ProbaFlash/ProbaFlash.vue'),
+        name: RouteNames.GENERATOR_PROBA,
+        component: GeneratorProba,
       },
     ]
   },
@@ -56,7 +63,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory("/"),
   routes
 })
 
