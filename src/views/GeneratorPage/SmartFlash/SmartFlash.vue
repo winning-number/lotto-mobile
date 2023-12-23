@@ -1,5 +1,5 @@
 <template>
-  <ion-page>
+  <ion-page tab="smart">
     <ion-header fullscreen="true">
       <GeneratorCard
         @generateDraw="this.generate"

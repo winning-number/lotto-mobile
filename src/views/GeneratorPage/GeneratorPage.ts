@@ -34,8 +34,12 @@ export default defineComponent({
 		}
 	},
 	methods: {
-		switchTab(path: string): void {
-			this.router.push(path)
+		getTabColor(path: string): string {
+			if (this.router.currentRoute.value.name === path) {
+				return "primary"
+			}
+
+			return ""
 		}
 	}
 });

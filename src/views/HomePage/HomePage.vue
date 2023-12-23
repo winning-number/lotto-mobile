@@ -17,7 +17,7 @@
           :drawsOutHeader="this.lastDraw.drawsOutHeader"
         />
       </ion-card>
-      <ion-card :disabled="false" button router-link="/generator/smart">
+      <ion-card :disabled="false" button @click="nav(RouteNames.GENERATOR)">
         <CardHeaderSection
           :headerTitle="this.nextDraw.headerTitle"
           :headerText="this.nextDraw.headerText"
