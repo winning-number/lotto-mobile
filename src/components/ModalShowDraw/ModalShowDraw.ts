@@ -4,8 +4,12 @@ import { DrawFull } from "@/store/models/homeData";
 import CardHeaderSection from "@/components/CardHeaderSection/CardHeaderSection.vue";
 import { CardHeaderSectionProps, CardHeaderSectionStyle, CardHeaderSectionType } from "@/components/CardHeaderSection/CardHeaderSection";
 import { Draw } from "@/store/models/draw";
-import { daySdkToApp, monthSdkToApp } from "@/script/LottoApp/TimeConverter";
+import { daySdkToApp, monthSdkToApp } from "@/script/LottoApp/EnumConverter";
 import { DaySdk, MonthSdk } from "@/service/SdkDrawApi/EnumsSdkDrawApi";
+import WinnerBoardFirstRoll from "@/components/WinnerBoardFirstRoll/WinnerBoardFirstRoll.vue";
+import ShowSecondRoll from "@/components/ShowSecondRoll/ShowSecondRoll.vue";
+import WinnerBoardSecondRoll from "@/components/WinnerBoardSecondRoll/WinnerBoardSecondRoll.vue";
+import { buildWinCodesPhrase } from "@/script/LottoApp/PhraseBuilder";
 
 interface ReportWinner {
 	title: string;
@@ -16,7 +20,10 @@ interface ReportWinner {
 export default defineComponent({
 	name: "ModalShowDraw",
 	components: {
-		CardHeaderSection
+		CardHeaderSection,
+		WinnerBoardFirstRoll,
+		WinnerBoardSecondRoll,
+		ShowSecondRoll
 	},
 	props: {
 		draw: { type: Object as PropType<DrawFull>, required: true}
@@ -25,6 +32,7 @@ export default defineComponent({
 		return {
 			chevronBackOutline,
 			chevronForwardOutline,
+			buildWinCodesPhrase,
 		}
 	},
 	data() {
@@ -41,7 +49,8 @@ export default defineComponent({
 				ball4: this.draw.ball4,
 				ball5: this.draw.ball5,
 				luckyBall: this.draw.lucky,
-			} as Draw
+			} as Draw,
+			subTitle: "Tirage du loto",
 		}
 
 		return {
@@ -52,6 +61,9 @@ export default defineComponent({
 	methods: {
 		closeModal(): void {
 			this.$emit('closeCallback')
+		},
+		hasSecondRoll(): boolean {
+			return this.draw.ball1SecondDraw !== undefined && this.draw.ball1SecondDraw !== 0
 		}
 	},
 });

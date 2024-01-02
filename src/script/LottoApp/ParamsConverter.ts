@@ -1,5 +1,5 @@
 import { DayParamsProbaFlashSdk } from "@/service/SdkDrawApi/EnumsSdkDrawApi";
-import { DayApp } from "./TimeConverter";
+import { DayApp } from "./EnumConverter";
 import { ConfigLuckyFlash } from "@/store/models/generator";
 import { ParamsLuckyFlashGenerator } from "@/service/SdkDrawApi/ParamsSdkDrawApi";
 

@@ -1,4 +1,4 @@
-import { DayApp } from "@/script/LottoApp/TimeConverter";
+import { DayApp } from "@/script/LottoApp/EnumConverter";
 
 export interface ConfigSmartFlash {
 	excludeBallNumber: Array<number>;

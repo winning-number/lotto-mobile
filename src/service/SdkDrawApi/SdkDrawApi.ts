@@ -4,12 +4,18 @@ import {
 	ParamsSmartFlashGenerator,
 	ParamsLuckyFlashGenerator,
 	ParamsProbaFlashGenerator,
+	ParamsHistory,
+	ParamsSearchDraw,
 } from "./ParamsSdkDrawApi";
 import {
 	HomeData,
 	jsonUnmarshallHomeData,
 	Draw,
 	jsonUnmarshallDraw,
+	jsonUnmarshallHistory,
+	History,
+	ListDrawFull,
+	jsonUnmarshallListDrawFull,
 } from "./ModelsSdkDrawApi"
 
 const ParamKeysSmartFlashGenerator = {
@@ -38,6 +44,15 @@ const ParamKeysProbaFlashGenerator = {
 	ASCENDING_ORDER: "top_max",
 }
 
+const ParamKeysSearchDraw = {
+	IDS: "draw_ids",
+}
+
+const ParamKeysHistory = {
+	LINK: "link",
+	SIZE: "size",
+}
+
 export default class SdkDrawApi {
 	private baseURL: string;
 	private paths: { [key: string]: string };
@@ -50,6 +65,8 @@ export default class SdkDrawApi {
 			LUCKY_FLASH_GENERATOR: "/api/luckyflash",
 			PROBA_FLASH_GENERATOR: "/api/probaflash",
 			HOME: "/api/home",
+			HISTORY: "/api/history",
+			SEARCH_DRAW: "/api/search",
 			HEALTHCHECK: "/healthcheck",
 		}
 	}
@@ -129,6 +146,43 @@ export default class SdkDrawApi {
 		try {
 			const resp: AxiosResponse = await axios(conf)
 			return Promise.resolve(jsonUnmarshallDraw(resp.data))
+		} catch (axiosErr: any) {
+			return Promise.reject(axiosErr)
+		}
+	}
+	async getHistory(params: ParamsHistory): Promise<History> {
+		const conf = getRequestConfig(this.baseURL, this.paths.HISTORY)
+		const urlParams = new URLSearchParams()
+
+		if (params.link.length > 0) {
+			urlParams.append(ParamKeysHistory.LINK, params.link)
+		}
+		if (params.size > 0) {
+			urlParams.append(ParamKeysHistory.SIZE, params.size.toString())
+		}
+
+		conf.params = urlParams
+
+		try {
+			const resp: AxiosResponse = await axios(conf)
+			return Promise.resolve(jsonUnmarshallHistory(resp.data))
+		} catch (axiosErr: any) {
+			return Promise.reject(axiosErr)
+		}
+	}
+	async searchDraw(params: ParamsSearchDraw): Promise<ListDrawFull> {
+		const conf = getRequestConfig(this.baseURL, this.paths.SEARCH_DRAW)
+		const urlParams = new URLSearchParams()
+
+		if (params.ids.length > 0) {
+			urlParams.append(ParamKeysSearchDraw.IDS, params.ids.join(","))
+		}
+
+		conf.params = urlParams
+
+		try {
+			const resp: AxiosResponse = await axios(conf)
+			return Promise.resolve(jsonUnmarshallListDrawFull(resp.data))
 		} catch (axiosErr: any) {
 			return Promise.reject(axiosErr)
 		}

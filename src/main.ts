@@ -33,6 +33,8 @@ import {
   IonSpinner,
   IonToggle,
   IonFooter,
+  IonAccordion,
+  IonAccordionGroup,
 } from '@ionic/vue';
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -64,11 +66,9 @@ import './theme/font.scss';
 import './theme/global.scss'
 
 (async () => {
-  console.log('Initializing app');
   await SplashScreen.show();
 })();
 
-console.log('Initializing app');
 const app = createApp(App)
   .use(IonicVue)
   .use(store, key)
@@ -107,7 +107,8 @@ app.component('ion-select', IonSelect);
 app.component('ion-spinner', IonSpinner);
 app.component('ion-toggle', IonToggle);
 app.component('ion-footer', IonFooter);
-
+app.component('ion-accordion', IonAccordion);
+app.component('ion-accordion-group', IonAccordionGroup);
 
 router.isReady().then(() => {
   store.dispatch(ModuleIdentifier.INITIALIZE).then(async () => {
