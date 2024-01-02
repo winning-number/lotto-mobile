@@ -8,7 +8,7 @@ import { ConfigButtonProps } from "@/components/ConfigButton/ConfigButton";
 import { Draw } from "@/store/models/draw";
 import GeneratorCard from "@/components/GeneratorCard/GeneratorCard.vue";
 import { GeneratorCardProps } from "@/components/GeneratorCard/GeneratorCard";
-import { DayApp } from "@/script/LottoApp/TimeConverter";
+import { DayApp } from "@/script/LottoApp/EnumConverter";
 
 export default defineComponent({
 	name: "ProbaFlash",

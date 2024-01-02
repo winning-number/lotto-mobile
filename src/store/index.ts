@@ -8,6 +8,7 @@ import {
 	LocalStorageOptions,
 } from '@/script/LocalStorage/LocalStorage';
 import { moduleGenerator, ModuleIdentifier as ModuleGeneratorIdentifier } from './modules/generator';
+import { moduleHistory, ModuleIdentifier as ModuleHistoryIdentifier } from './modules/history';
 import { localStorageKey } from './constants';
 
 export interface State {
@@ -39,6 +40,7 @@ export const store = createStore<State>({
 		errorModule,
 		moduleHomeData,
 		moduleGenerator,
+		moduleHistory,
 	},
 	plugins: [createLocalStorage({
 		key: localStorageKey,
@@ -64,6 +66,10 @@ export const store = createStore<State>({
 			})
 
 			await dispatch(ModuleGeneratorIdentifier.INIT_MODULE_GENERATOR).catch((err: Error) => {
+				return Promise.reject(err)
+			})
+
+			await dispatch(ModuleHistoryIdentifier.INIT_MODULE_HISTORY).catch((err: Error) => {
 				return Promise.reject(err)
 			})
 		}

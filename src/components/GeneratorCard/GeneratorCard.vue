@@ -1,5 +1,4 @@
 <template>
-<!--  <ion-card>-->
     <img :alt="this.altImage" :src="this.srcImage" />
     <ShowNumber class="ion-padding-end ion-padding-start" v-if="showNumbers"
     :ball1="this.draws.ball1"
@@ -24,7 +23,6 @@
         <ion-text v-else>{{ this.buttonMessage }}</ion-text>
       </ion-button>
     </ion-card-content>
-  <!--</ion-card>-->
 </template>
 
 <script src="./GeneratorCard.ts"></script>

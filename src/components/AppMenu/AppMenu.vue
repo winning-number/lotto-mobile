@@ -18,7 +18,7 @@
       <ion-item @click="this.nav('#')" button disabled>
         <ion-label color="secondary">Mes tirages</ion-label>
       </ion-item>
-      <ion-item @click="this.nav('#')" button disabled>
+      <ion-item @click="this.nav(this.RouteNames.HISTORY)" button>
         <ion-label color="secondary">Historique du loto</ion-label>
       </ion-item>
       <ion-item @click="this.nav('#')" button disabled>

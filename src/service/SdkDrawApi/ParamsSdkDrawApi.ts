@@ -23,3 +23,12 @@ export interface ParamsProbaFlashGenerator {
 	oldLotto: boolean
 	ascendingOrder: boolean
 }
+
+export interface ParamsHistory {
+	link: string
+	size: number
+}
+
+export interface ParamsSearchDraw {
+	ids: Array<string>
+}

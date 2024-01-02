@@ -12,9 +12,7 @@ import ModalShowDraw from '@/components/ModalShowDraw/ModalShowDraw.vue';
 import { Draw } from '@/store/models/draw';
 import { getDrawResulMessage } from '@/components/ModalShowDraw/ModalShowDraw';
 import { RouteNames } from '@/router';
-import { daySdkToApp, monthSdkToApp } from '@/script/LottoApp/TimeConverter';
-import { DaySdk, MonthSdk } from '@/service/SdkDrawApi/EnumsSdkDrawApi';
-
+import { buildWinnersPhrase, buildDatePhrase, buildPricePhrase } from '@/script/LottoApp/PhraseBuilder';
 
 export default defineComponent({
 	name: 'HomePage',
@@ -46,7 +44,7 @@ export default defineComponent({
 			style: CardHeaderSectionStyle.GREEN,
 		}
 		const nextDraw: CardHeaderSectionProps = {
-			headerTitle: getNextDrawTitle(nextDrawData),
+			headerTitle: buildPricePhrase(nextDrawData.rate),
 			headerText: getNextDrawMessage(nextDrawData),
 			subTitle: 'Je génère mes numéros, fissa fissa..',
 			type: CardHeaderSectionType.BUTTON,
@@ -90,7 +88,6 @@ export default defineComponent({
 });
 
 function buildWinnerMessage(lastDrawData: DrawFull): string {
-	let message = ""
 	let nbWinner = 0
 	let rateWinner = 0
 
@@ -119,26 +116,9 @@ function buildWinnerMessage(lastDrawData: DrawFull): string {
 		rateWinner = lastDrawData.rateWinnerRank1
 	}
 
-	message = nbWinner + " veinard" + (nbWinner > 1 ? "s" : "") + " " + (nbWinner > 1 ? "ont" : "a") + " gagné"
-		+ (nbWinner > 1 ? "s" : "") + " " + rateWinner.toLocaleString("fr-FR",{
-			style: "currency",
-			currency: "EUR",
-		})
-
-	return message
-}
-
-function getNextDrawTitle(draw: NextDraw): string {
-	const nMillion = draw.rate / 1000000
-
-	return nMillion + " million" + (nMillion > 1 ? "s" : "") + " d'euros"
+	return buildWinnersPhrase(nbWinner, rateWinner)
 }
 
 function getNextDrawMessage(draw: NextDraw): string {
-	let message = ""
-
-	message = "à gagner " + daySdkToApp(<DaySdk>draw.day) + " " + draw.dayNumber + " "
-		+ monthSdkToApp(<MonthSdk>draw.month) + " " + draw.year
-
-	return message
+	return "à gagner " + buildDatePhrase(draw.dayNumber, draw.day, draw.month, draw.year)
 }

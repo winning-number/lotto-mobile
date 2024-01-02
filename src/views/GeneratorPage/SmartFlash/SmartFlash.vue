@@ -18,7 +18,7 @@
       <ion-row class="my-spacer"></ion-row>
       <ion-item-group>
         <ion-item lines="none">
-          <ion-title slot=start color="medium ion-no-padding">{{ this.data.titleConfiguration }}</ion-title>
+          <ion-title slot=start color="medium" class="ion-no-padding">{{ this.data.titleConfiguration }}</ion-title>
           <ConfigButton
             @saveState="this.saveConfiguration"
             @restoreDefaultState="this.resetConfiguration"

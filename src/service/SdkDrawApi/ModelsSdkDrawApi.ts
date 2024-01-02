@@ -83,6 +83,7 @@ export function jsonUnmarshallDrawFull(json: any): DrawFull {
 		month: json.month,
 		year: json.year,
 		winnerCodes: json.winner_codes,
+		rateCode: json.rate_code,
 		ball1: json.ball_1,
 		ball2: json.ball_2,
 		ball3: json.ball_3,
@@ -116,6 +117,10 @@ export function jsonUnmarshallDrawFull(json: any): DrawFull {
 		rateWinnerRank7: json.rate_winner_rank_7,
 		rateWinnerRank8: json.rate_winner_rank_8,
 		rateWinnerRank9: json.rate_winner_rank_9,
+		rateWinnerRank1SecondDraw: json.rate_winner_rank_1_second_draw,
+		rateWinnerRank2SecondDraw: json.rate_winner_rank_2_second_draw,
+		rateWinnerRank3SecondDraw: json.rate_winner_rank_3_second_draw,
+		rateWinnerRank4SecondDraw: json.rate_winner_rank_4_second_draw,
 	} as DrawFull
 }
 
@@ -137,4 +142,84 @@ export function jsonUnmarshallDraw(json: any): Draw {
 		ball5: json.ball_5,
 		luckyBall: json.lucky_ball
 	} as Draw
+}
+
+export interface History {
+	pagination: Pagination
+	history: Array<ResumeDraw>
+}
+
+export function jsonUnmarshallHistory(json: any): History {
+	return {
+		pagination: jsonUnmarshallPagination(json.pagination),
+		history: jsonUnmarshallResumeDraw(json.history)
+	} as History
+}
+
+export interface Pagination {
+	totalItems: number
+	pageSize: number
+	offset: number
+	next: string
+}
+
+export function jsonUnmarshallPagination(json: any): Pagination {
+	return {
+		totalItems: json.total_items,
+		pageSize: json.item_per_page,
+		offset: json.offset,
+		next: json.next_link_page
+	} as Pagination
+}
+
+export interface ResumeDraw {
+	identifier: string
+	day: string
+	month: string
+	year: string
+	dayNumber: number
+	date: Date
+	ball1: number
+	ball2: number
+	ball3: number
+	ball4: number
+	ball5: number
+	lucky: number
+	haveWinner: boolean
+	rateToWin: number
+	type: string
+}
+
+export function jsonUnmarshallResumeDraw(json: any): Array<ResumeDraw> {
+	return json.map((draw: any) => {
+		return {
+			identifier: draw.identifier,
+			day: draw.day,
+			month: draw.month,
+			year: draw.year,
+			dayNumber: draw.day_number,
+			date: new Date(draw.date),
+			ball1: draw.ball_1,
+			ball2: draw.ball_2,
+			ball3: draw.ball_3,
+			ball4: draw.ball_4,
+			ball5: draw.ball_5,
+			lucky: draw.lucky_ball,
+			haveWinner: draw.have_winner,
+			rateToWin: draw.rate_to_win,
+			type: draw.lotto_type
+		} as ResumeDraw
+	})
+}
+
+export interface ListDrawFull {
+	draws: Array<DrawFull>
+}
+
+export function jsonUnmarshallListDrawFull(json: any): ListDrawFull {
+	return {
+		draws: json.draws.map((draw: any) => {
+			return jsonUnmarshallDrawFull(draw)
+		})
+	} as ListDrawFull
 }

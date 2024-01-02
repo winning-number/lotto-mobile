@@ -1,4 +1,4 @@
-import { DaySdk, MonthSdk } from "@/service/SdkDrawApi/EnumsSdkDrawApi";
+import { DaySdk, LottoTypeSdk, MonthSdk } from "@/service/SdkDrawApi/EnumsSdkDrawApi";
 
 export enum DayApp {
 //	All = "Tous",
@@ -24,6 +24,12 @@ export enum MonthApp {
 	October = "Octobre",
 	November = "Novembre",
 	December = "Décembre",
+}
+
+export enum LottoTypeApp {
+	SuperLotto = "Grand Loto",
+	ChristmasLotto = "Loto de Noël",
+	ClassicLotto = "Loto (classique)",
 }
 
 export function daySdkToApp(day: DaySdk): string {
@@ -89,6 +95,23 @@ export function monthSdkToApp(month: MonthSdk): string {
 		}
 		case MonthSdk.December: {
 			return MonthApp.December
+		}
+	}
+}
+
+export function lottoTypeSdkToApp(lottoType: LottoTypeSdk): string {
+	switch (lottoType) {
+		case LottoTypeSdk.SuperLotto: {
+			return LottoTypeApp.SuperLotto
+		}
+		case LottoTypeSdk.LargeLotto: {
+			return LottoTypeApp.SuperLotto
+		}
+		case LottoTypeSdk.ChristmasLotto: {
+			return LottoTypeApp.ChristmasLotto
+		}
+		case LottoTypeSdk.ClassicLotto: {
+			return LottoTypeApp.ClassicLotto
 		}
 	}
 }

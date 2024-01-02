@@ -33,3 +33,10 @@ export enum MonthSdk {
 	November = "November",
 	December = "December",
 }
+
+export enum LottoTypeSdk {
+	SuperLotto = "super-lotto",
+	LargeLotto = "grand-lotto",
+	ChristmasLotto = "xmas-lotto",
+	ClassicLotto = "new-lotto",
+}

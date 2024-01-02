@@ -18,7 +18,7 @@ import {
 	daysToDaysParamsProbaFlashSdk,
 	configLuckyFlashToParamsLuckyFlashGenerator,
 } from "@/script/LottoApp/ParamsConverter";
-import { DayApp } from "@/script/LottoApp/TimeConverter";
+import { DayApp } from "@/script/LottoApp/EnumConverter";
 import { localStorageKey } from "@/store/constants";
 
 export const ModuleIdentifier = {
